@@ -6,7 +6,13 @@ using System.Web;
 
 namespace EShop.Models
 {
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    /*
+     * 创建Controller之前要先注释掉这句，否则会报错如下
+     * Using the same DbCompiledModel to create contexts against different types 
+     * of database servers is not supported. Instead, create a separate 
+     * DbCompiledModel for each type of server being used.
+     */
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class EShopDbContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
@@ -16,7 +22,7 @@ namespace EShop.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public EShopDbContext() : base("name=EShopDbContext")
+        public EShopDbContext() : base("EShopDbContext")
         {
         }
 
@@ -27,6 +33,8 @@ namespace EShop.Models
         public DbSet<Order> Order { get; set; }
 
         public DbSet<Detail> Detail { get; set; }
+
+        public DbSet<Member> Member { get; set; }
 
     }
 }
