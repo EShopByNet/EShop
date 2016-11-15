@@ -21,5 +21,12 @@ namespace EShop.Models
         }
 
         public DbSet<Goods> Goods { get; set; }
+
+        public DbSet<Cat> Cat { get; set; }
+
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<Detail> Detail { get; set; }
+
     }
 }

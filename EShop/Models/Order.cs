@@ -6,20 +6,18 @@ using System.Web;
 
 namespace EShop.Models
 {
-    /// <summary>
-    /// 商品实体类
-    /// </summary>
-    public class Goods
+    public class Order
     {
         [Key]
         public string id { get; set; }
 
         [Required]
-        public string name { get; set; }
+        public int user_id { get; set; }
 
         [Required]
-        public int cat_id{ get; set; }
+        public int goods_id { get; set; }
 
-        public string detail_id { get; set; }
+        [Required]
+        public DateTime create_date { get; set; }
     }
 }

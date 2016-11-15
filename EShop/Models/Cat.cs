@@ -7,19 +7,22 @@ using System.Web;
 namespace EShop.Models
 {
     /// <summary>
-    /// 商品实体类
+    /// 商品分类实体
     /// </summary>
-    public class Goods
+    public class Cat
     {
         [Key]
-        public string id { get; set; }
+        public int ID { get; set; }
+
+        [Required]
+        public int parent_id { get; set; }
 
         [Required]
         public string name { get; set; }
 
-        [Required]
-        public int cat_id{ get; set; }
+        public bool isShow { get; set; }
 
-        public string detail_id { get; set; }
+        public bool isDelete { get; set; }
+
     }
 }
