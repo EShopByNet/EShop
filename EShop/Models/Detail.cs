@@ -10,9 +10,9 @@ namespace EShop.Models
     {
 
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
 
-        public string descript { get; set; }
+        public string Descript { get; set; }
 
     }
 }

@@ -7,12 +7,49 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EShop.Controllers
 {
+    [Authorize]
     public class MemberController : Controller
     {
         private EShopDbContext db = new EShopDbContext();
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public MemberController() { }
+
+        public MemberController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: Member
         public ActionResult Index()

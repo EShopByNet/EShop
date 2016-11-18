@@ -12,14 +12,14 @@ namespace EShop.Models
     public class Goods
     {
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [Required]
-        public string name { get; set; }
+        public string Nane { get; set; }
 
         [Required]
-        public int cat_id{ get; set; }
+        public int CatId{ get; set; }
 
-        public string detail_id { get; set; }
+        public string DetailId { get; set; }
     }
 }

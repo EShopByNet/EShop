@@ -13,15 +13,15 @@ namespace EShop.Models
     {
 
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
 
-        public string goods_id { get; set; }
+        public string GoodsId { get; set; }
 
-        public string user_id { get; set; }
+        public string UserId { get; set; }
 
-        public int number { get; set; }
+        public int Number { get; set; }
 
-        public double price { get; set; }
+        public double Price { get; set; }
 
     }
 }

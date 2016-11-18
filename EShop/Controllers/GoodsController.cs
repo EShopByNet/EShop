@@ -17,7 +17,7 @@ namespace EShop.Controllers
 
         // GET: Goods
         public async Task<ActionResult> Index()
-        {
+        {           
             return View(await db.Goods.ToListAsync());
         }
 

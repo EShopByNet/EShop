@@ -198,9 +198,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611150134402_InitialCreate.cs" />
-    <Compile Include="Migrations\201611150134402_InitialCreate.Designer.cs">
-      <DependentUpon>201611150134402_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201611180914141_InitialCreate.cs" />
+    <Compile Include="Migrations\201611180914141_InitialCreate.Designer.cs">
+      <DependentUpon>201611180914141_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -215,36 +215,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin-lte\css\AdminLTE.css" />
-    <Content Include="admin-lte\css\AdminLTE.min.css" />
-    <Content Include="admin-lte\css\skins\skin-black-light.css" />
-    <Content Include="admin-lte\css\skins\skin-black-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-black.css" />
-    <Content Include="admin-lte\css\skins\skin-black.min.css" />
-    <Content Include="admin-lte\css\skins\skin-blue-light.css" />
-    <Content Include="admin-lte\css\skins\skin-blue-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-blue.css" />
-    <Content Include="admin-lte\css\skins\skin-blue.min.css" />
-    <Content Include="admin-lte\css\skins\skin-green-light.css" />
-    <Content Include="admin-lte\css\skins\skin-green-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-green.css" />
-    <Content Include="admin-lte\css\skins\skin-green.min.css" />
-    <Content Include="admin-lte\css\skins\skin-purple-light.css" />
-    <Content Include="admin-lte\css\skins\skin-purple-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-purple.css" />
-    <Content Include="admin-lte\css\skins\skin-purple.min.css" />
-    <Content Include="admin-lte\css\skins\skin-red-light.css" />
-    <Content Include="admin-lte\css\skins\skin-red-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-red.css" />
-    <Content Include="admin-lte\css\skins\skin-red.min.css" />
-    <Content Include="admin-lte\css\skins\skin-yellow-light.css" />
-    <Content Include="admin-lte\css\skins\skin-yellow-light.min.css" />
-    <Content Include="admin-lte\css\skins\skin-yellow.css" />
-    <Content Include="admin-lte\css\skins\skin-yellow.min.css" />
-    <Content Include="admin-lte\css\skins\_all-skins.css" />
-    <Content Include="admin-lte\css\skins\_all-skins.min.css" />
-    <Content Include="admin-lte\js\app.js" />
-    <Content Include="admin-lte\js\app.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -331,8 +301,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611150134402_InitialCreate.resx">
-      <DependentUpon>201611150134402_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611180914141_InitialCreate.resx">
+      <DependentUpon>201611180914141_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

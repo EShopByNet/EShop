@@ -9,15 +9,15 @@ namespace EShop.Models
     public class Order
     {
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [Required]
-        public int user_id { get; set; }
+        public int UserId { get; set; }
 
         [Required]
-        public int goods_id { get; set; }
+        public int GoodsId { get; set; }
 
         [Required]
-        public DateTime create_date { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

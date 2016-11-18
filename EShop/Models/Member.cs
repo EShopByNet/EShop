@@ -12,31 +12,63 @@ namespace EShop.Models
     public class Member
     {
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
 
         [Required]
-        public string nick_name { get; set; }
+        public string NickName { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string sex { get; set; }
+        public string Sex { get; set; }
 
-        public int age { get; set; }
+        public int Age { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
-        public string address { get; set; }
+        public string Address { get; set; }
 
         [DataType(DataType.EmailAddress)]
-        public string e_mail { get; set; }
+        public string Email { get; set; }
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        public string salt { get; set; }
+        public string Salt { get; set; }
 
-        public string old_password { get; set; }
+        public string OldPassword { get; set; }
 
 
     }
+    
+    /// <summary>
+    /// 用户注册实体
+    /// </summary>
+    public class RegisterViewModel
+    {
+        public string UserName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Password { get; set; }
+
+        public string ConfirmPassword { get; set; }
+    }
+
+    /// <summary>
+    /// 忘记密码实体类
+    /// </summary>
+    public class forgetPassowrd
+    {
+        public string Phone { get; set; }
+    }
+
+    public class loginViewModel
+    {
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+        public string RememberMe { get; set; }
+    }
+
 }

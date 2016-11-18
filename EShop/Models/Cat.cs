@@ -12,17 +12,17 @@ namespace EShop.Models
     public class Cat
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public int parent_id { get; set; }
+        public int ParentId { get; set; }
 
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public bool isShow { get; set; }
+        public bool IsShow { get; set; }
 
-        public bool isDelete { get; set; }
+        public bool IsDelete { get; set; }
 
     }
 }
