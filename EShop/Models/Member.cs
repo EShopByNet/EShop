@@ -57,18 +57,18 @@ namespace EShop.Models
     /// <summary>
     /// 忘记密码实体类
     /// </summary>
-    public class forgetPassowrd
+    public class ForgetPassowrd
     {
         public string Phone { get; set; }
     }
 
-    public class loginViewModel
+    public class LoginViewModel
     {
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
-        public string RememberMe { get; set; }
+        public bool RememberMe { get; set; }
     }
 
 }
