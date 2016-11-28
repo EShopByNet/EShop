@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(EShop.Startup))]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Web.config", Watch = true)]
 namespace EShop
 {
     public partial class Startup
