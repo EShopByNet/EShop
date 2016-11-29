@@ -24,5 +24,10 @@ namespace EShop.Models
 
         public bool IsDelete { get; set; }
 
+        public static implicit operator List<object>(Cat v)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

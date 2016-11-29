@@ -19,5 +19,10 @@ namespace EShop.Models
 
         [Required]
         public DateTime CreateDate { get; set; }
+
+        public static implicit operator List<object>(Order v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

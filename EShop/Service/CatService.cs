@@ -1,6 +1,7 @@
 ﻿using EShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -22,20 +23,28 @@ namespace EShop.Service
         /// </summary>
         /// <param name="cat"></param>
         /// <returns></returns>
-        public async Task<Cat> create(Cat cat)
+        public async Task<bool> create(Cat cat)
         {
-            // TODO 添加商品分类信息方法
-            return null;
+            try
+            {
+                db.Cat.Add(cat);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                logger.Error("创建分类错误：" + e.Message);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
         /// 获取商品的所有分类
         /// </summary>
         /// <returns></returns>
-        public async Task<Cat> findAll()
+        public async Task<List<Cat>> findAll()
         {
-            // TODO 分类获取方法
-            return null;
+            return await db.Cat.ToListAsync();
         }
 
         /// <summary>
@@ -45,7 +54,17 @@ namespace EShop.Service
         /// <returns></returns>
         public async Task<bool> delete(string id)
         {
-            // TODO 商品分类信息删除方法
+            try
+            {
+                Cat cat = await db.Cat.FindAsync(id);
+                db.Cat.Remove(cat);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                return false;
+            }
             return true;
         }
 
@@ -56,8 +75,17 @@ namespace EShop.Service
         /// <returns></returns>
         public async Task<Cat> update(Cat cat)
         {
-            // TODO 商品分类信息更新方法
-            return null;
+            try
+            {
+                db.Entry(cat).State = EntityState.Modified;
+                int x = await db.SaveChangesAsync();
+                return await db.Cat.FindAsync(x);
+            }
+            catch (Exception e)
+            {
+                logger.Error("分类更新出错：" + e.Message);
+                return null;
+            }
         }
 
         /// <summary>
@@ -65,10 +93,10 @@ namespace EShop.Service
         /// </summary>
         /// <param name="keyWords"></param>
         /// <returns></returns>
-        public async Task<List<Goods>> search(string keyWords)
+        public async Task<List<Goods>> search(int id)
         {
-            // TODO 商品分类查询商品方法
-            return null;
+                List<Goods> goods = await db.Goods.Where(n => n.CatId.Equals(id)).ToListAsync();
+                return goods;
         }
 
     }
