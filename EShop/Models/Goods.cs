@@ -21,5 +21,10 @@ namespace EShop.Models
         public int CatId{ get; set; }
 
         public string DetailId { get; set; }
+
+        public static implicit operator List<object>(Goods v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

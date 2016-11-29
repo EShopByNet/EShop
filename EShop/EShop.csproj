@@ -222,6 +222,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CatService.cs" />
+    <Compile Include="Service\Constants.cs" />
     <Compile Include="Service\GoodsService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Startup.cs" />
