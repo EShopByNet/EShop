@@ -20,4 +20,4 @@ namespace EShop
             log4net.Config.XmlConfigurator.Configure(new System.IO.FileInfo(Server.MapPath("~/Web.config")));
         }
     }
-}
+}   
