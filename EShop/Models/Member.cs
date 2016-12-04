@@ -90,7 +90,7 @@ namespace EShop.Models
         [MaxLength(15)]
         public string UserName { get; set; }
 
-        [Required(AllowEmptyStrings =false]
+        [Required(AllowEmptyStrings =false)]
         [Display(Name ="密码")]
         public string Password { get; set; }
 
