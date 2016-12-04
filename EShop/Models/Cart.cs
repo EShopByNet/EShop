@@ -15,12 +15,18 @@ namespace EShop.Models
         [Key]
         public string Id { get; set; }
 
+        [Required]
         public string GoodsId { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
+        [Required]
+        [Display(Name ="数量")]
         public int Number { get; set; }
 
+        [Required]
+        [Display(Name ="单价")]
         public double Price { get; set; }
 
     }

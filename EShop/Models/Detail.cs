@@ -12,7 +12,11 @@ namespace EShop.Models
         [Key]
         public string Id { get; set; }
 
+        [Display(Name ="描述")]
         public string Descript { get; set; }
+
+        public string pics { get; set; }
+
 
     }
 }

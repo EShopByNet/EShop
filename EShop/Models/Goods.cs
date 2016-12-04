@@ -14,12 +14,15 @@ namespace EShop.Models
         [Key]
         public string Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings =false)]
+        [Display(Name ="名称")]
+        [MaxLength(25)]
         public string Nane { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings =false)]
         public int CatId{ get; set; }
 
+        [Required(AllowEmptyStrings =false)]
         public string DetailId { get; set; }
 
         public static implicit operator List<object>(Goods v)

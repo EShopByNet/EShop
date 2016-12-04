@@ -18,10 +18,13 @@ namespace EShop.Models
         public int ParentId { get; set; }
 
         [Required]
+        [Display(Name ="名称")]
         public string Name { get; set; }
 
+        [Display(Name ="是否显示")]
         public bool IsShow { get; set; }
 
+        [Display(Name ="是否删除")]
         public bool IsDelete { get; set; }
 
         public static implicit operator List<object>(Cat v)

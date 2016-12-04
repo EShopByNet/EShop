@@ -42,8 +42,9 @@ namespace EShop.Areas.Admin.Controllers
         }
 
         // POST: Admin/Cat/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /*
+         * Bind 设置绑定的字段，以防止过度发布
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
