@@ -72,6 +72,7 @@ namespace EShop.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         // GET: Account/Register
         public ActionResult Register()
         {
@@ -88,10 +89,13 @@ namespace EShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            //TODO 简单注册，业务逻辑需要重新实现
-            var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone };
-            var result = await UserManager.CreateAsync(user, model.Password);
-            return View(result);
+            if(ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }
