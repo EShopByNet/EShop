@@ -45,7 +45,7 @@ namespace EShop.Models
 
         public DbSet<Member> Member { get; set; }
 
-        public DbSet<Store> store { get; set; }
+        public DbSet<Store> Store { get; set; }
 
     }
 }

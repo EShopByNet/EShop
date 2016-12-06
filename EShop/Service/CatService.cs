@@ -95,7 +95,7 @@ namespace EShop.Service
         /// <returns></returns>
         public async Task<List<Goods>> search(int id)
         {
-                List<Goods> goods = await db.Goods.Where(n => n.CatId.Equals(id)).ToListAsync();
+                List<Goods> goods = await db.store.Where(n => n.CatId.Equals(id)).ToListAsync();
                 return goods;
         }
 

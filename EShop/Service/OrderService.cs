@@ -23,10 +23,19 @@ namespace EShop.Service
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        public async Task<Order> create(Order order)
+        public async Task<bool> create(Order order)
         {
-            // TODO 创建订单方法
-            return null;
+            try
+            {
+                db.Order.Add(order);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                logger.Error("创建订单错误：" + e.Message);
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -36,7 +45,17 @@ namespace EShop.Service
         /// <returns></returns>
         public async Task<bool> delete(string id)
         {
-            // 删除一个订单
+            try
+            {
+                Order order = await db.Order.FindAsync(id);
+                db.Order.Remove(order);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                logger.Error(e.Message);
+                return false;
+            }
             return true;
         }
 
@@ -47,8 +66,17 @@ namespace EShop.Service
         /// <returns></returns>
         public async Task<Order> update(Order order)
         {
-            // TODO 更新一条订单信息
-            return null;
+            try
+            {
+                db.Entry(order).State = EntityState.Modified;
+                int x = await db.SaveChangesAsync();
+                return await db.Order.FindAsync(x);
+            }
+            catch (Exception e)
+            {
+                logger.Error("订单更新出错：" + e.Message);
+                return null;
+            }
         }
 
         /// <summary>
@@ -56,9 +84,9 @@ namespace EShop.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Goods> findOne(string id)
+        public async Task<Order> findOne(string id)
         {
-            return await db.Goods.FindAsync(id);
+            return await db.Order.FindAsync(id);
         }
 
         /// <summary>
