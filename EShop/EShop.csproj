@@ -228,6 +228,7 @@
     <Compile Include="Service\Constants.cs" />
     <Compile Include="Service\GoodsService.cs" />
     <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\StoreService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
