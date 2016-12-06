@@ -8,19 +8,19 @@ namespace EShop.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Carts",
+                "dbo.cart",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        GoodsId = c.String(unicode: false),
-                        UserId = c.String(unicode: false),
+                        GoodsId = c.String(nullable: false, unicode: false),
+                        UserId = c.String(nullable: false, unicode: false),
                         Number = c.Int(nullable: false),
                         Price = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Cats",
+                "dbo.cat",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -32,45 +32,46 @@ namespace EShop.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Details",
+                "dbo.detail",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                         Descript = c.String(unicode: false),
+                        pics = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Goods",
+                "dbo.goods",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        Nane = c.String(nullable: false, unicode: false),
+                        Nane = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
                         CatId = c.Int(nullable: false),
-                        DetailId = c.String(unicode: false),
+                        DetailId = c.String(nullable: false, unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Members",
+                "dbo.member",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        NickName = c.String(nullable: false, unicode: false),
+                        NickName = c.String(nullable: false, maxLength: 15, storeType: "nvarchar"),
                         Name = c.String(unicode: false),
                         Sex = c.String(unicode: false),
                         Age = c.Int(nullable: false),
                         Phone = c.String(unicode: false),
                         Address = c.String(unicode: false),
                         Email = c.String(unicode: false),
-                        Password = c.String(unicode: false),
-                        Salt = c.String(unicode: false),
+                        Password = c.String(nullable: false, unicode: false),
+                        Salt = c.String(nullable: false, unicode: false),
                         OldPassword = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Orders",
+                "dbo.order",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
@@ -80,16 +81,35 @@ namespace EShop.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.store",
+                c => new
+                    {
+                        id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        name = c.String(nullable: false, maxLength: 15, storeType: "nvarchar"),
+                        logo = c.String(unicode: false),
+                        userId = c.String(nullable: false, unicode: false),
+                        storeLv = c.Int(nullable: false),
+                        isDisable = c.Int(nullable: false),
+                        bussinessLicense = c.String(unicode: false),
+                        phone = c.String(unicode: false),
+                        address = c.String(unicode: false),
+                        descript = c.String(unicode: false),
+                        createTime = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.id);
+            
         }
         
         public override void Down()
         {
-            DropTable("dbo.Orders");
-            DropTable("dbo.Members");
-            DropTable("dbo.Goods");
-            DropTable("dbo.Details");
-            DropTable("dbo.Cats");
-            DropTable("dbo.Carts");
+            DropTable("dbo.store");
+            DropTable("dbo.order");
+            DropTable("dbo.member");
+            DropTable("dbo.goods");
+            DropTable("dbo.detail");
+            DropTable("dbo.cat");
+            DropTable("dbo.cart");
         }
     }
 }

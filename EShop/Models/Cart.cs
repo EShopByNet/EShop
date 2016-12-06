@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 购物车实体
     /// </summary>
+    [Table("cart")]
     public class Cart
     {
 

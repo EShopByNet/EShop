@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 商品实体类
     /// </summary>
+    [Table("goods")]
     public class Goods
     {
         [Key]
@@ -20,7 +22,7 @@ namespace EShop.Models
         public string Nane { get; set; }
 
         [Required(AllowEmptyStrings =false)]
-        public int CatId{ get; set; }
+        public int CatId { get; set; }
 
         [Required(AllowEmptyStrings =false)]
         public string DetailId { get; set; }
