@@ -1,12 +1,28 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace EShop.Models
 {
+
+    public class ApplicationUser : IdentityUser
+    {
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    }
+
     /*
      * 创建Controller之前要先注释掉这句，否则会报错如下
      * Using the same DbCompiledModel to create contexts against different types 
@@ -14,7 +30,7 @@ namespace EShop.Models
      * DbCompiledModel for each type of server being used.
      */
     [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
-    public class EShopDbContext : DbContext
+    public class EShopDbContext : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -31,6 +47,11 @@ namespace EShop.Models
 
         public EShopDbContext() : base("EShopDbContext")
         {
+        }
+
+        public static EShopDbContext Create()
+        {
+            return new EShopDbContext();
         }
 
         public DbSet<Goods> Goods { get; set; }

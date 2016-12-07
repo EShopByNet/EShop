@@ -10,6 +10,8 @@ namespace EShop.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
+            CodeGenerator = new MySql.Data.Entity.MySqlMigrationCodeGenerator();
         }
 
         protected override void Seed(EShop.Models.EShopDbContext context)
