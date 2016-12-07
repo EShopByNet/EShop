@@ -89,11 +89,14 @@ namespace EShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone };
+                var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone, Email = "2364672979@qq.com" };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                return RedirectToAction("Index");
+                if (result.Succeeded == true)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
             }
             return View();
         }

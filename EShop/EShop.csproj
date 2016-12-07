@@ -219,7 +219,6 @@
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\EShopDbContext.cs" />
     <Compile Include="Models\Goods.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Store.cs" />

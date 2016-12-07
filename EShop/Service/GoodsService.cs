@@ -63,7 +63,7 @@ namespace EShop.Service
         /// </summary>
         /// <param name="goods"></param>
         /// <returns></returns>
-        public async Task<Goods> edit(Goods goods)
+        public async Task<Goods> update(Goods goods)
         {
             try
             {

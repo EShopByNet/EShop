@@ -67,6 +67,11 @@ namespace EShop.Models
         [Display(Name ="电话")]
         public string Phone { get; set; }
 
+        [Display(Name ="电子邮件")]
+        [DataType(DataType.EmailAddress)]
+        [Required]
+        public string email { get; set; }
+
         [Required]
         [Display(Name ="密码")]
         public string Password { get; set; }
