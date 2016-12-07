@@ -42,6 +42,7 @@ namespace EShop.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //移除Entity Framework建表时在表名后提交"s"的规约,使得表名可以通过[Table]注解来指定
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
