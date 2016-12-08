@@ -100,5 +100,13 @@ namespace EShop.Controllers
             }
             return View();
         }
+
+
+        // GET: Account/Index
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

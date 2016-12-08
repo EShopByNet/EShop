@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row" style="position:absolute;left:0px;">
+    <div class="col-md-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">
+                            第 1 部分
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">first</li>
+                            <li class="list-group-item">second</li>
+                            <li class="list-group-item">third</li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                four
+                            </li>
+                            <li class="list-group-item">five</li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                折扣优惠
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">
+                            第 2 部分
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">111</li>
+                            <li class="list-group-item">222</li>
+                            <li class="list-group-item">333</li>
+                            <li class="list-group-item">444</li>
+                            <li class="list-group-item">555</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">
+                            第 3 部分
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">do</li>
+                            <li class="list-group-item">ri</li>
+                            <li class="list-group-item">mi</li>
+                            <li class="list-group-item">fa</li>
+                            <li class="list-group-item">so</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">
+                            第 4 部分
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">
+                            第 5 部分
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseSix">
+                            第 6 部分
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>     
+    </div>
+    <div class="col-md-9">
+        <div class="container body-content">
+            @RenderBody()           
+        </div>
+    </div>
+</div>
+
+
