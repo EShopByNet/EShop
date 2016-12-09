@@ -108,5 +108,19 @@ namespace EShop.Controllers
         {
             return View();
         }
+
+        // GET: Account/Lookupusers
+        [AllowAnonymous]
+        public ActionResult Lookupusers()
+        {
+            return View();
+        }
+
+        // GET: Account/Index
+        [AllowAnonymous]
+        public ActionResult Userregister()
+        {
+            return View();
+        }
     }
 }
