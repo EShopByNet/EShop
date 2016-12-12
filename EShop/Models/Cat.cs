@@ -10,7 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 商品分类实体
     /// </summary>
-    [Table("cat")]
+    [Table("Cat")]
     public class Cat
     {
         [Key]

@@ -66,9 +66,18 @@ namespace EShop.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            //TODO 简单登录，逻辑重新需要实现
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            return View(result);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Index", "Home");
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
         }
 
         [HttpGet]
@@ -110,14 +119,12 @@ namespace EShop.Controllers
         }
 
         // GET: Account/Lookupusers
-        [AllowAnonymous]
         public ActionResult Lookupusers()
         {
             return View();
         }
 
         // GET: Account/Index
-        [AllowAnonymous]
         public ActionResult Userregister()
         {
             return View();

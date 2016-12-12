@@ -10,7 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 商品实体类
     /// </summary>
-    [Table("goods")]
+    [Table("Goods")]
     public class Goods
     {
         [Key]

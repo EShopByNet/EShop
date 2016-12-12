@@ -339,12 +339,12 @@
     <Content Include="Views\Shared\Back_stage.cshtml" />
     <Content Include="Views\Account\Lookupusers.cshtml" />
     <Content Include="Views\Account\Userregister.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="document\" />
-    <Folder Include="Views\Cart\" />
     <Folder Include="Views\Cat\" />
     <Folder Include="Views\Order\" />
   </ItemGroup>

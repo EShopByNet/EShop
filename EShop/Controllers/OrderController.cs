@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace EShop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         // GET: Order

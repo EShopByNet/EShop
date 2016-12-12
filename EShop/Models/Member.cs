@@ -10,7 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 用户实体类
     /// </summary>
-    [Table("member")]
+    [Table("Member")]
     public class Member
     {
         [Key]

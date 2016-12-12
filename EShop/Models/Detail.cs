@@ -7,7 +7,7 @@ using System.Web;
 
 namespace EShop.Models
 {
-    [Table("detail")]
+    [Table("Detail")]
     public class Detail
     {
 

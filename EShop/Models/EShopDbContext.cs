@@ -29,7 +29,7 @@ namespace EShop.Models
      * of database servers is not supported. Instead, create a separate 
      * DbCompiledModel for each type of server being used.
      */
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class EShopDbContext : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.

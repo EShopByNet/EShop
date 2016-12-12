@@ -10,7 +10,7 @@ namespace EShop.Models
     /// <summary>
     /// 购物车实体
     /// </summary>
-    [Table("cart")]
+    [Table("Cart")]
     public class Cart
     {
 

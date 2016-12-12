@@ -53,6 +53,7 @@ namespace EShop.Controllers
         /// 进入添加商品页面
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -64,6 +65,7 @@ namespace EShop.Controllers
         /// </summary>
         /// <param name="goods"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "id")] Goods goods)
@@ -86,6 +88,7 @@ namespace EShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
@@ -106,6 +109,7 @@ namespace EShop.Controllers
         /// </summary>
         /// <param name="goods"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "id")] Goods goods)
@@ -125,6 +129,7 @@ namespace EShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<ActionResult> Delete(string id)
         {
             if (id == null)
@@ -145,6 +150,7 @@ namespace EShop.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
