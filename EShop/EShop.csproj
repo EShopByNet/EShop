@@ -340,13 +340,13 @@
     <Content Include="Views\Account\Lookupusers.cshtml" />
     <Content Include="Views\Account\Userregister.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="document\" />
     <Folder Include="Views\Cat\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,24 +1,34 @@
 ﻿@model IEnumerable<EShop.Models.Goods>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Back_stage.cshtml";
+    ViewBag.Title = "商品信息";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<hr />
+<br />
 <table class="table">
     <tr>
-        <th></th>
+        <th>图像</th>
+        <th>名称</th>
+        <th>描述</th>
+        <th>操作</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+          @*  @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+    @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+            @Html.ActionLink("新增", "Create")
+            @Html.ActionLink("删除", "Details")
+            @Html.ActionLink("修改", "Edit")
         </td>
     </tr>
 }
