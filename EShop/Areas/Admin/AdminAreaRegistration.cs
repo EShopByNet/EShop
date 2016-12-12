@@ -15,7 +15,7 @@ namespace EShop.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Admin_default",
+                "Admin",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
                 new string[] { "EShop.Areas.Admin.Controllers" }
