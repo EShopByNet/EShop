@@ -100,7 +100,7 @@ namespace EShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone, Email = "2364672979@qq.com" };
+                var user = new ApplicationUser { UserName = model.UserName, PhoneNumber = model.Phone, Email = model.email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded == true)
                 {
