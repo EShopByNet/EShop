@@ -27,7 +27,7 @@ namespace EShop.Models
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "价格")]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "描述")]

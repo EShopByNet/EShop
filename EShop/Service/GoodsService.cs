@@ -128,7 +128,7 @@ namespace EShop.Service
         {
             if (!string.IsNullOrWhiteSpace(keyWords) || !string.IsNullOrEmpty(keyWords))
             {
-                List<Goods> goods = await db.Goods.Where(n => n.DetailId.Contains(keyWords)).Where(n => n.Nane.Contains(keyWords)).ToListAsync();
+                List<Goods> goods = await db.Goods.Where(n => n.DetailId.Contains(keyWords)).Where(n => n.Name.Contains(keyWords)).ToListAsync();
                 return goods;
             }
             else
