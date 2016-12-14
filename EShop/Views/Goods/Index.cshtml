@@ -8,7 +8,7 @@
 <h2>@ViewBag.Title</h2>
 
 <hr />
-<br />
+<br />@Html.ActionLink("新增", "Create")
 <table class="table">
     <tr>
         <th>图像</th>
@@ -20,15 +20,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Name)
           @*  @Html.ActionLink("Details", "Details", new { id=item.ID }) |
     @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
         </td>
-        <td></td>
-        <td></td>
+        <td>@Html.DisplayFor(modelItem => item.CatId)</td>
+        <td>@Html.DisplayFor(modelItem => item.DetailId)</td>
         <td>
-            @Html.ActionLink("新增", "Create")
-            @Html.ActionLink("删除", "Details")
-            @Html.ActionLink("修改", "Edit")
+            @Html.ActionLink("编辑", "Edit")
+            @Html.ActionLink("详细", "Details")
+            @Html.ActionLink("删除", "Delete")
         </td>
     </tr>
 }

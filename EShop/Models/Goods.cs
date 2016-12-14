@@ -19,7 +19,19 @@ namespace EShop.Models
         [Required(AllowEmptyStrings =false)]
         [Display(Name ="名称")]
         [MaxLength(25)]
-        public string Nane { get; set; }
+        public string Name { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "图片")]
+        public string Image { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "价格")]
+        public string Price { get; set; }
+
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "描述")]
+        public string Detail { get; set; }
 
         [Required(AllowEmptyStrings =false)]
         public int CatId { get; set; }

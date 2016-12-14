@@ -9,7 +9,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseTwo">
-                            首页
+                            @Html.ActionLink("首页", "Index", "Account")
                         </a>
                     </h4>
                 </div>
@@ -26,8 +26,8 @@
                 <div id="collapseOne" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="#~/Views/Account/Lookupusers.cshtml">查看用户</a></li>
-                            <li class="list-group-item"><a href="#~/Views/Account/Userregister.cshtml">注册</a></li>
+                            <li class="list-group-item">@Html.ActionLink("查看用户", "Lookupusers", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("注册", "Userregister", "Account")</li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">商品信息</li>
+                            <li class="list-group-item">@Html.ActionLink("商品信息", "Index", "Goods")</li>
                             <li class="list-group-item">订单信息</li>
                             <li class="list-group-item">333</li>
                             <li class="list-group-item">444</li>
