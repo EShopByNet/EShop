@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EShop.Models;
+using EShop.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,16 +11,19 @@ namespace EShop.Controllers
     [Authorize]
     public class OrderController : Controller
     {
+
+        private OrderService orderService = new OrderService();
+
         // GET: Order
         public ActionResult Index()
         {
-            return View();
+            return View(orderService.findAll());
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            return View(orderService.findOne(id));
         }
 
         // GET: Order/Create
@@ -44,14 +49,14 @@ namespace EShop.Controllers
         }
 
         // GET: Order/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            return View(orderService.findOne(id));
         }
 
         // POST: Order/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Order order, FormCollection collection)
         {
             try
             {
@@ -61,19 +66,19 @@ namespace EShop.Controllers
             }
             catch
             {
-                return View();
+                return View(order);
             }
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            return View(orderService.findOne(id));
         }
 
         // POST: Order/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, FormCollection collection)
         {
             try
             {
@@ -83,7 +88,7 @@ namespace EShop.Controllers
             }
             catch
             {
-                return View();
+                return View(orderService.findOne(id));
             }
         }
     }

@@ -48,11 +48,21 @@ namespace EShop.Service
         }
 
         /// <summary>
+        /// 查询一条分类信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Cat> findOne(int id)
+        {
+            return await db.Cat.FindAsync(id);
+        }
+
+        /// <summary>
         /// 删除一个分类信息
         /// </summary>
         /// <param name="id">分类id</param>
         /// <returns></returns>
-        public async Task<bool> delete(string id)
+        public async Task<bool> delete(int id)
         {
             try
             {

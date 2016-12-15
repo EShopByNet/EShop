@@ -89,6 +89,16 @@ namespace EShop.Service
             return store;
         }
 
+        /// <summary>
+        /// 查询一条店铺信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Store> findOne(string id)
+        {
+            return await db.Store.FindAsync(id);
+        }
+
 
     }
 }
