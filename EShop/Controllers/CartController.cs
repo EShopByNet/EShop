@@ -16,9 +16,9 @@ namespace EShop.Controllers
         private CartService cartService = new CartService();
 
         // GET: Cart
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(cartService.findAll());
+            return View(await cartService.findAll());
         }
 
     }

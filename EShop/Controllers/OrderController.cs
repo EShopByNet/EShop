@@ -3,6 +3,7 @@ using EShop.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,15 +16,15 @@ namespace EShop.Controllers
         private OrderService orderService = new OrderService();
 
         // GET: Order
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(orderService.findAll());
+            return View(await orderService.findAll());
         }
 
         // GET: Order/Details/5
-        public ActionResult Details(string id)
+        public async Task<ActionResult> Details(string id)
         {
-            return View(orderService.findOne(id));
+            return View(await orderService.findOne(id));
         }
 
         // GET: Order/Create
@@ -49,9 +50,9 @@ namespace EShop.Controllers
         }
 
         // GET: Order/Edit/5
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
-            return View(orderService.findOne(id));
+            return View(await orderService.findOne(id));
         }
 
         // POST: Order/Edit/5
@@ -71,9 +72,9 @@ namespace EShop.Controllers
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
-            return View(orderService.findOne(id));
+            return View(await orderService.findOne(id));
         }
 
         // POST: Order/Delete/5
