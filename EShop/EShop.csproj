@@ -342,6 +342,8 @@
     <Content Include="Views\Account\Userregister.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Shared\_BackLayout.cshtml" />
+    <Content Include="Views\Account\ChangPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

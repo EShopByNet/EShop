@@ -10,33 +10,28 @@
     <meta name="description" content="The description of my page" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background:#F2F2F2;border-bottom-color:white;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <img src="~/Images/yundong.jpg" style="width:40px;height:30px;margin-top:20%;" />
+               @Html.Partial("_LoginPartial")   
             </div>
-            <div class="navbar-collapse collapse">
-                <div style="position:fixed;right:60px;top:2%;border:1px #797979 solid;border-radius:20px;height:24px;padding:0px 5px;">
-                    <span><a href="#">登录</a></span>|<span><a href="#">注册</a></span>
-                </div>
-                <div style="position:fixed;right:0px;top:2%;border:1px #797979 solid;border-radius:20px 0px 0px 20px;">
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span>退出</a>
-                </div>
-                <!--<ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse">     
+                                     
+                <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")-->
+                
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-       <!-- <hr />
+       <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>-->
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

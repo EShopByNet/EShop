@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using EShop.Models;
 using EShop.Service;
+using System.IO;
 
 namespace EShop.Controllers
 {
@@ -55,8 +56,8 @@ namespace EShop.Controllers
         /// <returns></returns>
         [Authorize]
         public ActionResult Create()
-        {
-            return View();
+        {           
+                return View();           
         }
 
         /// <summary>

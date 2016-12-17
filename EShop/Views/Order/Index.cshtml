@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EShop.Models.Order>
+﻿@model List<EShop.Models.Order>
 @{
     Layout = "~/Views/Shared/Back_stage.cshtml";
     ViewBag.Title = "订单信息";
@@ -16,7 +16,7 @@
         <th>操作</th>
     </tr>
 
-    @foreach (var item in Model)
+@foreach (var item in Model)
     {
         <tr>
             <td>
@@ -25,10 +25,9 @@
             </td>
             <td></td>
             <td></td>
-            <td>
-                @Html.ActionLink("新增", "Create")
-                @Html.ActionLink("删除", "Details")
-                @Html.ActionLink("修改", "Edit")
+            <td>             
+                @Html.ActionLink("删除", "Delete")
+                @Html.ActionLink("详情", "Details")
             </td>
         </tr>
     }

@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_BackLayout.cshtml";
 }
 <div class="row" style="position:absolute;left:0px;">
     <div class="col-md-3">
@@ -8,22 +8,31 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo">
-                            @Html.ActionLink("首页", "Index", "Account")
+                           href="#collapseOne">
+                           后台系统管理菜单
                         </a>
                     </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">@Html.ActionLink("首页", "Index", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("修改密码", "Index", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("退出系统", "Index", "Account")</li>
+                        </ul>                       
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseOne">
+                           href="#collapseTwo">
                             用户管理
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse">
+                <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">@Html.ActionLink("查看用户", "Lookupusers", "Account")</li>
@@ -45,12 +54,42 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">@Html.ActionLink("商品信息", "Index", "Goods")</li>
-                            <li class="list-group-item">订单信息</li>
-                            <li class="list-group-item">333</li>
-                            <li class="list-group-item">444</li>
-                            <li class="list-group-item">555</li>
+                            <li class="list-group-item">@Html.ActionLink("发布商品", "Create", "Goods")</li>
+                            <li class="list-group-item">@Html.ActionLink("已售出商品", "Index", "Goods")</li>
+                            <li class="list-group-item">历史记录</li>
+                            <li class="list-group-item">体验中心</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">
+                            @Html.ActionLink("订单管理", "Index", "Order")
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">
+                            @Html.ActionLink("评价管理", "Index", "Order")
+                        </a>
+                    </h4>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseSix">
+                            @Html.ActionLink("帮助", "Index", "Order")
+                        </a>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -58,7 +97,11 @@
     
     <div class="container body-content">
         <div class="col-md-9">
-            @RenderBody()           
+            <section>
+                @RenderBody()
+            </section>
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)      
         </div>
     </div>
 </div>
