@@ -10,7 +10,7 @@
     <meta name="description" content="The description of my page" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#F2F2F2;border-bottom:white;">
         <div class="container">
             <div class="navbar-header">
                @Html.Partial("_LoginPartial")   
@@ -18,15 +18,46 @@
             <div class="navbar-collapse collapse">     
                                      
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("我的订单", "Index", "Home")</li>
+                    <li>@Html.ActionLink("购物车[0]", "About", "Home")</li>
+                    <li>@Html.ActionLink("收藏夹", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("更多", "Contact", "Home")</li>
                 </ul>
                 
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-lg-offset-1">
+                <img src="~/Images/yundong.jpg" style="width:150px;height:100px;"/>
+            </div>
+            <div class="col-md-5 col-md-offset-1">               
+                    <form class="bs-example bs-example-form" role="form" style="margin-top:15px;">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><b class="glyphicon glyphicon-search"></b></span>
+                            <input type="text" class="form-control" placeholder="Twitterhandle">
+                        </div>                       
+                    </form>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">家用跑步机</a></li>
+                        <li><a href="#">家用跑步机</a></li>
+                        <li><a href="#">家用跑步机</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">               
+                <div class="btn-group" style="margin-top:15px;">
+                    <button type="button" class="btn btn-default btn-danger">购物车</button>
+                    <button type="button" class="btn btn-default">我的订单</button>
+                </div>           
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="body-content">
         @RenderBody()
        <hr />
         <footer>
