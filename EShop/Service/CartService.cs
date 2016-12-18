@@ -8,7 +8,7 @@ using System.Web;
 
 namespace EShop.Service
 {
-    public class CartService
+    public class CarService
     {
 
         private readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -32,6 +32,22 @@ namespace EShop.Service
         public async Task<Cart> findOne(string id)
         {
             return await db.Cart.FindAsync(id);
+        }
+
+        public async Task<bool> delete(string id)
+        {
+            Cart cart = await db.Cart.FindAsync(id);
+            db.Cart.Remove(cart);
+            try
+            {
+                await db.SaveChangesAsync();
+                return true;
+            }
+            catch(Exception e)
+            {
+                logger.Error("删除购物车错误：" + e.Message);
+                return false;
+            }
         }
 
     }

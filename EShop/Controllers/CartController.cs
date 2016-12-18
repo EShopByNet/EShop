@@ -13,7 +13,7 @@ namespace EShop.Controllers
     public class CartController : Controller
     {
 
-        private CartService cartService = new CartService();
+        private CarService cartService = new CarService();
 
         // GET: Cart
         public async Task<ActionResult> Index()

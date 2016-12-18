@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Models;
+using System.Threading.Tasks;
+using EShop.Service;
 
 namespace EShop.Areas.Admin.Controllers
 {
@@ -14,20 +16,32 @@ namespace EShop.Areas.Admin.Controllers
     {
         private EShopDbContext db = new EShopDbContext();
 
+        private CatService catService = new CatService();
+
+        /// <summary>
+        /// 进入分类index页面
+        /// </summary>
+        /// <returns></returns>
         // GET: Admin/Cat
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Cat.ToList());
+            return View(await catService.findAll());
         }
 
+        /// <summary>
+        /// 进入到一个分类详情页面
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: Admin/Cat/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int id)
         {
+            // TODO id为空处理待处理
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = db.Cat.Find(id);
+            Cat cat = await catService.findOne(id);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -41,32 +55,41 @@ namespace EShop.Areas.Admin.Controllers
             return View();
         }
 
+
+        /// <summary>
+        /// 添加一个分类
+        /// Bind 设置绑定的字段，以防止过度发布
+        /// </summary>
+        /// <param name="cat"></param>
+        /// <returns></returns>
         // POST: Admin/Cat/Create
-        /*
-         * Bind 设置绑定的字段，以防止过度发布
-         */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
+        public async Task<bool> Create([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
         {
             if (ModelState.IsValid)
             {
-                db.Cat.Add(cat);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(await catService.create(cat))
+                {
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
             }
 
-            return View(cat);
+            return false;
         }
 
         // GET: Admin/Cat/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = db.Cat.Find(id);
+            Cat cat = await db.Cat.FindAsync(id);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -79,25 +102,25 @@ namespace EShop.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(cat).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(cat);
         }
 
         // GET: Admin/Cat/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = db.Cat.Find(id);
+            Cat cat = await db.Cat.FindAsync(id);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -112,7 +135,7 @@ namespace EShop.Areas.Admin.Controllers
         {
             Cat cat = db.Cat.Find(id);
             db.Cat.Remove(cat);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
