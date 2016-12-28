@@ -2,7 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<style> 
+<style>
+    span {
+        color:red;
+    }
     .fj1 {
         position: absolute;
         width: 97.8%;
@@ -17,80 +20,7 @@
         z-index: 1;
     }
 </style>
-
-  <script language="javascript">
-var w,h,id,speed,Html
-w=400;//-------滚动容器的宽度--------//
-h=100;//-------滚动容器的高度--------//
-id="div1";//-------滚动容器的id--------//
-direction="left";//-------滚动方向有四个值left，right，up，down，自己试试--------//
-speed="100";//-------滚动速度100相当于1秒，越小越快--------//
-imgDiv="img";//-------放图片的容器id--------//
-HtmlL=document.getElementById(imgDiv).innerHTML;
-HtmlT=document.getElementById(id).innerHTML;
-switch (direction)
-{
-case "left":
-     document.getElementById(imgDiv).innerHTML=HtmlL+HtmlL;
-  break;
-case "right":
-     document.getElementById(imgDiv).innerHTML=HtmlL+HtmlL;
-  break;
-case "up":
-     document.getElementById(id).innerHTML=HtmlT+HtmlT;
-  break;
-case "down":
-     document.getElementById(id).innerHTML=HtmlT+HtmlT;
-  break;
-}
-function ss(){
-document.getElementById(id).style.width=w;
-document.getElementById(id).style.height=h;
-document.getElementById(imgDiv).style.width=w*2;
-document.getElementById(imgDiv).style.height=h;
-var ele
-ele=document.getElementById("div1");
-switch (direction)
-{
-case "left":
-ele.scrollLeft=ele.scrollLeft+5;
-if (ele.scrollLeft>=w)
-{
-ele.scrollLeft=0;
-}
-break;
-case "right":
-ele.scrollLeft=ele.scrollLeft-5;
-if (ele.scrollLeft<=0)
-{
-ele.scrollLeft=w;
-}
-break;
-case "up":
-ele.scrollTop=ele.scrollTop+5;
-if (ele.scrollTop>=h)
-{
-ele.scrollTop=0;
-}
-break;
-case "down":
-ele.scrollTop=ele.scrollTop-5;
-if (ele.scrollTop<=0)
-{
-ele.scrollTop=h;
-}
-break;
-}
-t=setTimeout("ss()",speed);
-}
-function stop(){
-document.getElementById("div1").scrollLeft=document.getElementById("div1").scrollLeft;
-document.getElementById("div1").scrollTop=document.getElementById("div1").scrollTop;
-     clearTimeout(t);
-}
-setTimeout("ss()",100);
-</script>
-
+  
 <div>
     
         <ul class="nav nav-tabs nav-justified">
@@ -189,23 +119,24 @@ setTimeout("ss()",100);
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">       
+        <img src="~/Images/90.jpg" alt="First slide" style="height:200px;width:100%;">
         <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <span>￥143.00</span>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <img src="~/Images/90.jpg" alt="First slide" style="height:200px;width:100%;">
         <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
+        <span>￥143.00</span>
+        </div>
+    <div class="col-md-3">
+        <img src="~/Images/90.jpg" alt="First slide" style="height:200px;width:100%;">
         <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+        <span>￥143.00</span>
+        </div>
+    <div class="col-md-3">
+        <img src="~/Images/90.jpg" alt="First slide" style="height:200px;width:100%;">
+        <h2>Web Hosting</h2>
+        <span>￥143.00</span>
+       </div>
 </div>
