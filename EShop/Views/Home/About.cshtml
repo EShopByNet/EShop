@@ -1,7 +1,52 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "商品詳情";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+       <img src="~/Images/90.jpg" style="height:300px;width:100%;"/>
+
+    </div>
+    <div class="col-md-5">
+        <h3>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h3>
+        <p style="color:red;">58项功能 50*70 全国联保 终身售后</p>
+        <div style="background-color:gray;width:100%;">
+            <span style="color:red;font-size:36px;">￥299.99</span>
+            <span>参考价<del>￥599.00</del></span>
+            
+        </div>
+        <p>运费   快递：0.00</p>
+        <div style="border-bottom:1px dotted gray;border-top:1px dotted gray;width:100%;text-align:center ;">
+            <ul class="nav nav-tabs nav-justified">                
+                <li>月销量<span style="color:red;">299</span></li>
+                <li>累计评价<span style="color:red;">2432</span></li>
+                <li>赞（56）</li>               
+            </ul>
+        </div>       <br />     
+        <div class="row">
+            <div class="col-md-1">
+                <span>数量</span>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">-</button>
+                    </span>
+                    <input type="text" class="form-control" value="1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">+</button>
+                    </span>
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-4 col-lg-offset-2">
+                <input type="submit" value="立即抢购" class="btn btn-default" style="background:#169BD2;color:white;" />
+            </div>
+            <div class="col-md-4">
+                <input type="submit" value="加入购物车" class="btn btn-warning" style="color:white;" />
+            </div>
+        </div>
+    </div>
+</div>
