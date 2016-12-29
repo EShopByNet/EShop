@@ -131,7 +131,7 @@ namespace EShop.Areas.Admin.Controllers
         // POST: Admin/Cat/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Cat cat = db.Cat.Find(id);
             db.Cat.Remove(cat);
