@@ -1,8 +1,9 @@
-﻿@{
+﻿@model EShop.Models.GoodsData
+@{
     ViewBag.Title = "商品詳情";
 }
 
-<hr />
+<hr />@Html.DisplayFor(Model=>Model.goods.CatId)
 <div class="row">
     <div class="col-md-4">
        <img src="~/Images/90.jpg" style="height:300px;width:100%;"/>

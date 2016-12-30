@@ -69,5 +69,7 @@ namespace EShop.Models
 
         public DbSet<Store> Store { get; set; }
 
+        public DbSet<Album> Album { get; set; }
+
     }
 }

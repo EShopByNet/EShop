@@ -25,9 +25,26 @@ namespace EShop.Models
         [Display(Name = "图片")]
         public string Image { get; set; }
 
+        [Display(Name = "原价")]
+        public double costPrice { get; set; }
+
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "价格")]
-        public double Price { get; set; }
+        public double Price
+        {
+            get { return Price; }
+            set
+            {
+                if (value.Equals(null))
+                {
+                    Price = 0.00;
+                }
+                else
+                {
+                    Price = value;
+                }
+            }
+        }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "描述")]
@@ -43,5 +60,14 @@ namespace EShop.Models
         {
             throw new NotImplementedException();
         }
+    }
+
+    /// <summary>
+    /// 商品数据数据实体
+    /// </summary>
+    public class GoodsData
+    {
+        public Goods goods { get; set; }
+        public List<Album> albums { get; set; }
     }
 }

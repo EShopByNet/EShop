@@ -214,6 +214,7 @@
       <DependentUpon>201612061358327_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Cat.cs" />
     <Compile Include="Models\Detail.cs" />
