@@ -15,21 +15,25 @@ namespace EShop.Models
     {
 
         [Key]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         [Required]
-        public string GoodsId { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
+        public string goodsId { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
+        public string userId { get; set; }
 
         [Required]
         [Display(Name ="数量")]
-        public int Number { get; set; }
+        public int number { get; set; }
 
         [Required]
         [Display(Name ="单价")]
-        public double Price { get; set; }
+        public double price { get; set; }
 
     }
 }

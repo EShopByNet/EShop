@@ -9,7 +9,7 @@
 
 <hr />
 <br />
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Goods", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -17,14 +17,14 @@
        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.image, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
               @* @if (string.IsNullOrEmpty(Model.Image))
       {
@@ -34,21 +34,35 @@
     {
           < img width = "150" height = "150" src = "@Url.Content(Model.Image)" alt = "images" />
     }*@
-              <input type = "file" style = "margin-bottom:10px;" name = "" id = "" />
+              <input type = "file" style = "margin-bottom:10px;" name = "image" id = "" />
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.price, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Price)
-                @Html.ValidationMessageFor(model => model.Price)
+                @Html.EditorFor(model => model.price)
+                @Html.ValidationMessageFor(model => model.price)
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Detail, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.detail, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Detail)
-                @Html.ValidationMessageFor(model => model.Detail)
+                @Html.EditorFor(model => model.detail)
+                @Html.ValidationMessageFor(model => model.detail)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.catId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.catId)
+                @Html.ValidationMessageFor(model => model.catId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.detailId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.detailId)
+                @Html.ValidationMessageFor(model => model.detailId)
             </div>
         </div>
         <div class="form-group">

@@ -14,20 +14,22 @@ namespace EShop.Models
     public class Cat
     {
         [Key]
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Required]
-        public int ParentId { get; set; }
+        public int parentId { get; set; }
 
         [Required]
         [Display(Name ="名称")]
-        public string Name { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(20)]
+        public string name { get; set; }
 
         [Display(Name ="是否显示")]
-        public bool IsShow { get; set; }
+        public bool isShow { get; set; }
 
         [Display(Name ="是否删除")]
-        public bool IsDelete { get; set; }
+        public bool isDelete { get; set; }
 
         public static implicit operator List<object>(Cat v)
         {

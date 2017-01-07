@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EShop.Service
 {
@@ -18,6 +19,15 @@ namespace EShop.Service
         private EShopDbContext db = new EShopDbContext();
 
         /// <summary>
+        /// 获取商品列表
+        /// </summary>
+        /// <returns></returns>
+        public Task<List<Goods>> list()
+        {
+            return db.Goods.ToListAsync();
+        }
+
+        /// <summary>
         /// 添加一个商品
         /// </summary>
         /// <param name="goods"></param>
@@ -26,6 +36,7 @@ namespace EShop.Service
         {
             try
             {
+                goods.id = new Guid().ToString();
                 db.Goods.Add(goods);
                 await db.SaveChangesAsync();
             }
@@ -128,13 +139,18 @@ namespace EShop.Service
         {
             if (!string.IsNullOrWhiteSpace(keyWords) || !string.IsNullOrEmpty(keyWords))
             {
-                List<Goods> goods = await db.Goods.Where(n => n.DetailId.Contains(keyWords)).Where(n => n.Name.Contains(keyWords)).ToListAsync();
+                List<Goods> goods = await db.Goods.Where(n => n.detailId.Contains(keyWords)).Where(n => n.name.Contains(keyWords)).ToListAsync();
                 return goods;
             }
             else
             {
                 return await findByPage(Constants.PAGE_SIZE, Constants.PAGE_NO);
             }
+        }
+
+        public EShopDbContext getContent()
+        {
+            return db;
         }
 
     }

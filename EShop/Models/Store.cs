@@ -19,6 +19,8 @@ namespace EShop.Models
         public string name { get; set; }
         public string logo { get; set; }
         [Required]
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
         public string userId { get; set; }
         public int storeLv { get; set; }
         public int isDisable { get; set; }

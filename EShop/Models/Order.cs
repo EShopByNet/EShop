@@ -7,22 +7,31 @@ using System.Web;
 
 namespace EShop.Models
 {
-    [Table("Order")]
+    [Table("Orders")]
     public class Order
     {
         [Key]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
+        public string uid { get; set; }
 
         [Required]
-        public int GoodsId { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
+        public string userId { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
+        public string goodsId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [Display(Name ="创建时间")]
-        public DateTime CreateDate { get; set; }
+        public DateTime createDate { get; set; }
 
         public static implicit operator List<object>(Order v)
         {

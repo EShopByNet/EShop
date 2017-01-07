@@ -209,9 +209,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612061358327_InitialCreate.cs" />
-    <Compile Include="Migrations\201612061358327_InitialCreate.Designer.cs">
-      <DependentUpon>201612061358327_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201701070247127_InitialCreate.cs" />
+    <Compile Include="Migrations\201701070247127_InitialCreate.Designer.cs">
+      <DependentUpon>201701070247127_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -352,14 +352,15 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="document\" />
+    <Folder Include="Images\goods\" />
     <Folder Include="Views\Cat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612061358327_InitialCreate.resx">
-      <DependentUpon>201612061358327_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701070247127_InitialCreate.resx">
+      <DependentUpon>201701070247127_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

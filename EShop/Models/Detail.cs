@@ -12,10 +12,11 @@ namespace EShop.Models
     {
 
         [Key]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         [Display(Name ="描述")]
-        public string Descript { get; set; }
+        [Column(TypeName = "text")]
+        public string descript { get; set; }
 
         public string pics { get; set; }
 

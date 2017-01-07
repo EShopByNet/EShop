@@ -15,8 +15,6 @@ namespace EShop.Controllers
 {
     public class GoodsController : Controller
     {
-        private EShopDbContext db = new EShopDbContext();
-
         private GoodsService goodsService = new GoodsService();
 
         /// <summary>
@@ -26,7 +24,7 @@ namespace EShop.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Index()
         {           
-            return View(await db.Goods.ToListAsync());
+            return View(await goodsService.list());
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace EShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = await db.Goods.FindAsync(id);
+            Goods goods = await goodsService.findOne(id);
             if (goods == null)
             {
                 return HttpNotFound();
@@ -69,10 +67,19 @@ namespace EShop.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id")] Goods goods)
+        public async Task<ActionResult> Create(Goods goods)
         {
             if (ModelState.IsValid)
             {
+                HttpPostedFileBase file = Request.Files["image"];
+                if (file != null && file.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(file.FileName);
+                    string filePath = "/Images/goods/" + fileName;
+                    var path = Server.MapPath(filePath);
+                    file.SaveAs(path);
+                    goods.image = filePath;
+                }
                 bool result =await goodsService.createGoods(goods);
                 if (result == true)
                 {
@@ -96,7 +103,7 @@ namespace EShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = await db.Goods.FindAsync(id);
+            Goods goods = await goodsService.findOne(id);
             if (goods == null)
             {
                 return HttpNotFound();
@@ -117,8 +124,7 @@ namespace EShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(goods).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await goodsService.update(goods);
                 return RedirectToAction("Index");
             }
             return View(goods);
@@ -137,7 +143,7 @@ namespace EShop.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = await db.Goods.FindAsync(id);
+            Goods goods = await goodsService.findOne(id);
             if (goods == null)
             {
                 return HttpNotFound();
@@ -156,9 +162,7 @@ namespace EShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Goods goods = await db.Goods.FindAsync(id);
-            db.Goods.Remove(goods);
-            await db.SaveChangesAsync();
+            await goodsService.delete(id);
             return RedirectToAction("Index");
         }
 
@@ -170,7 +174,7 @@ namespace EShop.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                goodsService.getContent().Dispose();
             }
             base.Dispose(disposing);
         }

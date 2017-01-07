@@ -14,41 +14,41 @@ namespace EShop.Models
     public class Member
     {
         [Key]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         [Required(AllowEmptyStrings =false)]
         [MaxLength(15)]
         [Display(Name ="昵称")]
-        public string NickName { get; set; }
+        public string nickName { get; set; }
 
         [Display(Name ="姓名")]
-        public string Name { get; set; }
+        public string name { get; set; }
 
         [Display(Name ="性别")]
-        public string Sex { get; set; }
+        public string sex { get; set; }
 
         [Display(Name ="年龄")]
-        public int Age { get; set; }
+        public int age { get; set; }
 
         [Display(Name ="电话号码")]
         [DataType(DataType.PhoneNumber)]
-        public string Phone { get; set; }
+        public string phone { get; set; }
 
         [Display(Name ="地址")]
-        public string Address { get; set; }
+        public string address { get; set; }
 
         [Display(Name ="电子邮件")]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [Required(AllowEmptyStrings =false)]
         [Display(Name ="密码")]
-        public string Password { get; set; }
+        public string password { get; set; }
 
         [Required]
-        public string Salt { get; set; }
+        public string salt { get; set; }
 
-        public string OldPassword { get; set; }
+        public string oldPassword { get; set; }
 
 
     }

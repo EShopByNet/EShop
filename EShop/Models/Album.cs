@@ -14,6 +14,8 @@ namespace EShop.Models
         [Key]
         public string id { get; set; }
         [Required]
+        [Column(TypeName = "varchar")]
+        [MaxLength(128)]
         public string goodsId { get; set; }
         public string small { get; set; }
         public string big { get; set; }
