@@ -16,12 +16,7 @@
                 <img src="~/Images/yundong.jpg" style="width:40px;height:30px;margin-top:20%;" />
             </div>
             <div class="navbar-collapse collapse">
-                <div style="position:fixed;right:60px;top:2%;border:1px #797979 solid;border-radius:20px;height:24px;padding:0px 5px;">
-                    <span><a href="#">登录</a></span>|<span><a href="#">注册</a></span>
-                </div>
-                <div style="position:fixed;right:0px;top:2%;border:1px #797979 solid;border-radius:20px 0px 0px 20px;">
-                    <a href="#"><span class="glyphicon glyphicon-remove"></span>退出</a>
-                </div>
+                @Html.Partial("_LoginPartial")                  
             </div>
         </div>
     </div>

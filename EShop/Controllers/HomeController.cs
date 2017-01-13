@@ -38,6 +38,18 @@ namespace EShop.Controllers
             return View(goodsData);
         }
 
+        public ActionResult Orders()
+        {
+
+            return View();
+        }
+
+        public ActionResult ShoppingCart()
+        {
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
