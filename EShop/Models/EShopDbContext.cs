@@ -21,6 +21,9 @@ namespace EShop.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string id { get; set; }
+        
     }
 
     /*
