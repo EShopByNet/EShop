@@ -244,9 +244,26 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\5.jpg" />
     <Content Include="Images\546.jpg" />
     <Content Include="Images\90.jpg" />
+    <Content Include="Images\bdfsd.jpg" />
+    <Content Include="Images\glby.jpg" />
+    <Content Include="Images\healthlogo.jpg" />
+    <Content Include="Images\hw.jpg" />
+    <Content Include="Images\nk.jpg" />
+    <Content Include="Images\nkss.png" />
+    <Content Include="Images\qx.jpg" />
+    <Content Include="Images\tlz.jpg" />
+    <Content Include="Images\ty.jpg" />
+    <Content Include="Images\ua5872eda3Nad78de54.jpg" />
+    <Content Include="Images\yd.jpg" />
+    <Content Include="Images\ydf.jpg" />
+    <Content Include="Images\ymqp.jpg" />
     <Content Include="Images\yundong.jpg" />
+    <Content Include="Images\zb.jpg" />
+    <Content Include="Images\zc.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -347,6 +364,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Shared\_BackLayout.cshtml" />
     <Content Include="Views\Account\ChangPassword.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
+    <Content Include="Views\Home\ShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
