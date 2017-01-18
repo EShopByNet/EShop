@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/Back_stage.cshtml";
+}
+
+<br />
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增分类</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+            </div><br />
+            <div class="form-horizontal" style="margin-left:10px;">              
+                <div class="form-group">
+                    <div class="col-md-2">分类名称</div>
+                    <div class="col-md-10">
+                        <input type="text" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">分类图片</div>
+                    <div class="col-md-10">
+
+                        <input type="file" style="margin-bottom:10px;" name="image" id="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">上级分类</div>
+                    <div class="col-md-10">
+                        <select class="form-control">
+                            <option>运动城</option>
+                            <option>户外馆</option>
+                            <option>体育馆</option>
+                            <option>骑行馆</option>
+                            <option>装备馆</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">商品类型</div>
+                    <div class="col-md-10">
+                        <select class="form-control">                           
+                            <optgroup label="运动城">
+                                <option>跑步机</option>
+                                <option>划船器</option>
+                                <option>动感单车</option>
+                                <option>腰腹板</option>
+                            </optgroup>
+                            <optgroup label="户外馆">
+                                <option>登山杖</option>
+                                <option>望远镜</option>
+                                <option>帐篷</option>
+                            </optgroup>
+                            <optgroup label="体育馆">
+                                <option>羽毛球</option>
+                                <option>篮球</option>
+                                <option>兵乓球</option>
+                                <option>排球</option>
+                            </optgroup>
+                            <optgroup label="骑行馆">
+                                <option>山地自行车</option>
+                            </optgroup>
+                            <optgroup label="装备馆">
+                                <option>负重沙袋</option>
+                                <option>护腿装备</option>
+                                <option>硅胶跑步装备</option>
+                            </optgroup>
+                        </select>
+
+                    </div>
+                </div>               
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="保存" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+@using (Html.BeginForm("Classify", "Goods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>哒哒哒</td>
+                <td>下次</td>
+                <td>删除|修改</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>下次</td>
+                <td>z</td>
+                <td>删除|修改</td>
+            </tr>
+        </tbody>
+    </table>
+
+}
+
+<div>
+    @Html.ActionLink("返回上一步", "Index")
+</div>   
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

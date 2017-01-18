@@ -17,6 +17,47 @@
        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            <div class="col-md-2 col-lg-offset-1">商品分类</div>
+            <div class="col-md-2">
+                <select class="form-control">
+                    <option>运动城</option>
+                    <option>户外馆</option>
+                    <option>体育馆</option>
+                    <option>骑行馆</option>
+                    <option>装备馆</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control">
+                    <optgroup label="运动城">
+                        <option>跑步机</option>
+                        <option>划船器</option>
+                        <option>动感单车</option>
+                        <option>腰腹板</option>
+                    </optgroup>
+                    <optgroup label="户外馆">
+                        <option>登山杖</option>
+                        <option>望远镜</option>
+                        <option>帐篷</option>
+                    </optgroup>
+                    <optgroup label="体育馆">
+                        <option>羽毛球</option>
+                        <option>篮球</option>
+                        <option>兵乓球</option>
+                        <option>排球</option>
+                    </optgroup>
+                    <optgroup label="骑行馆">
+                        <option>山地自行车</option>
+                    </optgroup>
+                    <optgroup label="装备馆">
+                        <option>负重沙袋</option>
+                        <option>护腿装备</option>
+                        <option>硅胶跑步装备</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.name)
@@ -25,15 +66,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.image, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-              @* @if (string.IsNullOrEmpty(Model.Image))
-      {
-          @:None
-      }
-    else
-    {
-          < img width = "150" height = "150" src = "@Url.Content(Model.Image)" alt = "images" />
-    }*@
+            <div class="col-md-10">              
               <input type = "file" style = "margin-bottom:10px;" name = "image" id = "" />
             </div>
         </div>
@@ -47,24 +80,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.detail, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.detail)
+                @Html.TextAreaFor(model => model.detail,5,50,new { })
                 @Html.ValidationMessageFor(model => model.detail)
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.catId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.catId)
-                @Html.ValidationMessageFor(model => model.catId)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.detailId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.detailId)
-                @Html.ValidationMessageFor(model => model.detailId)
-            </div>
-        </div>
+        
         <div class="form-group">
             @* @Html.LabelFor(model => model.ID, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
@@ -75,10 +95,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="新增" class="btn btn-default" />
             </div>
         </div>
     </div>
+
 }
 
 <div>

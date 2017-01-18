@@ -178,5 +178,12 @@ namespace EShop.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize]
+        public ActionResult Classify()
+        {
+
+            return View();
+        }
     }
 }
