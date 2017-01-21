@@ -14,7 +14,6 @@ namespace EShop.Areas.Admin.Controllers
 {
     public class CatController : Controller
     {
-        private EShopDbContext db = new EShopDbContext();
 
         private CatService catService = new CatService();
 
@@ -49,23 +48,16 @@ namespace EShop.Areas.Admin.Controllers
             return View(cat);
         }
 
-        // GET: Admin/Cat/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
 
         /// <summary>
         /// 添加一个分类
-        /// Bind 设置绑定的字段，以防止过度发布
         /// </summary>
         /// <param name="cat"></param>
         /// <returns></returns>
         // POST: Admin/Cat/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<bool> Create([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
+        public async Task<bool> Create(Cat cat)
         {
             if (ModelState.IsValid)
             {
