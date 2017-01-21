@@ -17,6 +17,8 @@ namespace EShop.Areas.Admin.Controllers
 
         private CatService catService = new CatService();
 
+        private FileUploadService fileUpload = new FileUploadService();
+
         /// <summary>
         /// 进入分类index页面
         /// </summary>
@@ -57,10 +59,17 @@ namespace EShop.Areas.Admin.Controllers
         // POST: Admin/Cat/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<bool> Create([Bind(Exclude = "type")] Cat cat)
+        public async Task<bool> Create([Bind(Exclude = "themePic")] Cat cat)
         {
             if (ModelState.IsValid)
             {
+                HttpPostedFileBase file = Request.Files["themePic"];
+                if (null != file)
+                {
+                    string subFolder = "upload/themes/";
+                    string path = fileUpload.Upload(file, Server.MapPath(subFolder));
+                    cat.themePic = path;
+                }
                 if(await catService.create(cat))
                 {
                     return true;

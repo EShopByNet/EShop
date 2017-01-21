@@ -26,31 +26,15 @@ namespace EShop.Service
         /// </summary>
         /// <param name="files"></param>
         /// <param name="type">文件类型</param>
-        public List<string> Upload(HttpFileCollection files, FileType type, bool isSignle, string subFolder)
+        public string Upload(HttpPostedFileBase file, string subFolder)
         {
             if (!File.Exists(subFolder))
             {
                 Directory.CreateDirectory(subFolder);
             }
-            List<string> data = new List<string>();
-            if (isSignle)
-            {
-                HttpPostedFile file = files[0];
-                string fullPath = subFolder + file.FileName;
-                data.Add(fullPath);
-                file.SaveAs(fullPath);
-            }
-            else
-            {
-                for (int i = 0; i < files.Count; i++)
-                {
-                    HttpPostedFile file = files[i];
-                    string fullPath = subFolder + file.FileName;
-                    data.Add(fullPath);
-                    file.SaveAs(fullPath);
-                }
-            }
-            return data;
+            string fullPath = subFolder + file.FileName;
+            file.SaveAs(fullPath);
+            return fullPath;
         }
 
     }
