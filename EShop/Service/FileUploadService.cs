@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -27,20 +28,26 @@ namespace EShop.Service
         /// <param name="type">文件类型</param>
         public List<string> Upload(HttpFileCollection files, FileType type, bool isSignle, string subFolder)
         {
+            if (!File.Exists(subFolder))
+            {
+                Directory.CreateDirectory(subFolder);
+            }
             List<string> data = new List<string>();
             if (isSignle)
             {
-                HttpPostedFile file = files.Get(1);
-                data.Add(subFolder + file.FileName);
-                file.SaveAs(data[0]);
+                HttpPostedFile file = files[0];
+                string fullPath = subFolder + file.FileName;
+                data.Add(fullPath);
+                file.SaveAs(fullPath);
             }
             else
             {
                 for (int i = 0; i < files.Count; i++)
                 {
-                    HttpPostedFile file = files.Get(i);
-                    data.Add(subFolder + file.FileName);
-                    file.SaveAs(data[i]);
+                    HttpPostedFile file = files[i];
+                    string fullPath = subFolder + file.FileName;
+                    data.Add(fullPath);
+                    file.SaveAs(fullPath);
                 }
             }
             return data;

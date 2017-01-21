@@ -200,10 +200,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -266,6 +266,7 @@
     <Content Include="Images\yundong.jpg" />
     <Content Include="Images\zb.jpg" />
     <Content Include="Images\zc.jpg" />
+    <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

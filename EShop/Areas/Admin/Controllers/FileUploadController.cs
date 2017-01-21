@@ -5,20 +5,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EShop.Controllers
+namespace EShop.Areas.Admin.Controllers
 {
     public class FileUploadController : Controller
     {
         private FileUploadService fileUpload = new FileUploadService();
 
-        private readonly string defSubFolder = "upload";
+        private readonly string defSubFolder = "upload/";
 
         /// <summary>
         /// 上传图片
         /// </summary>
         /// <param name="httpContent"></param>
         /// <returns></returns>
-        public JsonResult Upload(HttpContext httpContent,string type)
+        [HttpPost]
+        public JsonResult Upload(string type)
         {
             string subFolder = Request.Params.Get("subFolder");
             if (null == subFolder || "" == subFolder || " " == subFolder)
@@ -27,10 +28,9 @@ namespace EShop.Controllers
             }
             else
             {
-                subFolder = Server.MapPath(subFolder);
+                subFolder = Server.MapPath(subFolder+"/");
             }
-            JsonResult result = new JsonResult();
-            HttpFileCollection files = httpContent.Request.Files;
+            HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
             bool isSingle = false;
             if (files.Count <= 1)
             {
@@ -52,6 +52,8 @@ namespace EShop.Controllers
                     data = fileUpload.Upload(files, FileType.other, isSingle, subFolder);
                     break;
             }
+            JsonResult result = new JsonResult();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             result.Data = data;
             return result;
         } 

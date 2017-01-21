@@ -22,7 +22,8 @@
                 <div class="form-group">
                     <div class="col-md-2">主题图片</div>
                     <div class="col-md-10">
-                        <input type="file" style="margin-bottom:10px;" id="pic" />
+                        <div id="picPreview"></div>
+                        <input type="file" style="margin-bottom:10px;" id="pic" name="pic" />
                         <input type="hidden" name="themePic" value="" />
                     </div>
                 </div>
@@ -80,7 +81,53 @@
 <div>
     @Html.ActionLink("返回上一步", "Index")
 </div>
+<script>
+    $("#pic").change(function () {
+        var file = $(this).val();
+        var formdata = new FormData();
+        formdata.append('file', $('#pic')[0].files[0]);
+        if (hasFile(file)) {
+            if (isPicture(file)) {
+                $.ajaxFileUpload({
+                    url: "FileUpload/Upload?type=picture", //用于文件上传的服务器端请求地址
+                    type: "post",
+                    secureuri: false, 
+                    fileElementId: "pic", 
+                    dataType: "json", 
+                    success: function (data) {  
+                        var img = $("<img/>");
+                        img.attr("src", data);
+                        img.css({
+                            "height": "100",
+                            "width": "100"
+                        });
+                        img.appendTo($("#picPreview"))
+                    },
+                    error: function (data, status, e) {  //服务器响应失败处理函数
+                        alert(e);
+                    }
+                });
+            } else {
+                alert("只支持图片文件的上传");
+            }
+        }
+    })
+    function hasFile(file) {
+        if (file == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    function isPicture(file) {
+        var strExtension = file.substr(file.lastIndexOf('.') + 1);
+        if (strExtension != 'jpg' && strExtension != 'gif'
+        && strExtension != 'png' && strExtension != 'bmp') {
+            return false;
+        }
+        else {
+            return true
+        }
+    }
+</script>
