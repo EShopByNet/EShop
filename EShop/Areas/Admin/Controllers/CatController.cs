@@ -14,9 +14,10 @@ namespace EShop.Areas.Admin.Controllers
 {
     public class CatController : Controller
     {
-        private EShopDbContext db = new EShopDbContext();
 
         private CatService catService = new CatService();
+
+        private FileUploadService fileUpload = new FileUploadService();
 
         /// <summary>
         /// 进入分类index页面
@@ -34,14 +35,14 @@ namespace EShop.Areas.Admin.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: Admin/Cat/Details/5
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
             // TODO id为空处理待处理
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = await catService.findOne(id);
+            Cat cat = await catService.findOne(id.Value);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -49,26 +50,26 @@ namespace EShop.Areas.Admin.Controllers
             return View(cat);
         }
 
-        // GET: Admin/Cat/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
 
         /// <summary>
         /// 添加一个分类
-        /// Bind 设置绑定的字段，以防止过度发布
         /// </summary>
         /// <param name="cat"></param>
         /// <returns></returns>
         // POST: Admin/Cat/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<bool> Create([Bind(Include = "Id,ParentId,Name,IsShow,IsDelete")] Cat cat)
+        public async Task<bool> Create([Bind(Exclude = "themePic")] Cat cat)
         {
             if (ModelState.IsValid)
             {
+                HttpPostedFileBase file = Request.Files["themePic"];
+                if (null != file)
+                {
+                    string subFolder = "upload/themes/";
+                    string path = fileUpload.Upload(file, Server.MapPath(subFolder));
+                    cat.themePic = path;
+                }
                 if(await catService.create(cat))
                 {
                     return true;
@@ -89,8 +90,8 @@ namespace EShop.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = await db.Cat.FindAsync(id);
-            if (cat == null)
+            Cat cat = await catService.findOne(id.Value);
+                if (cat == null)
             {
                 return HttpNotFound();
             }
@@ -106,8 +107,7 @@ namespace EShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cat).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                await catService.update(cat);
                 return RedirectToAction("Index");
             }
             return View(cat);
@@ -120,7 +120,7 @@ namespace EShop.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cat cat = await db.Cat.FindAsync(id);
+            Cat cat = await catService.findOne(id.Value);
             if (cat == null)
             {
                 return HttpNotFound();
@@ -133,9 +133,7 @@ namespace EShop.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Cat cat = db.Cat.Find(id);
-            db.Cat.Remove(cat);
-            await db.SaveChangesAsync();
+            await catService.delete(id);
             return RedirectToAction("Index");
         }
 
@@ -143,7 +141,8 @@ namespace EShop.Areas.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                // TODO 释放资源
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

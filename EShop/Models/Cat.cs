@@ -17,13 +17,16 @@ namespace EShop.Models
         public int id { get; set; }
 
         [Required]
-        public int parentId { get; set; }
+        public int type { get; set; }
 
         [Required]
         [Display(Name ="名称")]
         [Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string name { get; set; }
+
+        [Display(Name ="主题图片")]
+        public string themePic { get; set; }
 
         [Display(Name ="是否显示")]
         public bool isShow { get; set; }
