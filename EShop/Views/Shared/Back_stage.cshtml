@@ -92,9 +92,20 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseFour">
-                            @Html.ActionLink("订单管理", "Index", "Order")
+                            订单管理
                         </a>
                     </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">@Html.ActionLink("订单列表", "Index", "Order")</li>
+                            <li class="list-group-item">
+                                待结算订单
+                            </li>
+                            <li class="list-group-item">待发货订单</li>                            
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">

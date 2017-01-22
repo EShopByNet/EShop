@@ -16,10 +16,11 @@ namespace EShop.Controllers
         private CatService catService = new CatService();
 
         // GET: Cat
-        public async Task<ActionResult> Index()
-        {
-            return View(await catService.findAll());
-        }
+         public async Task<ActionResult> Index()
+         {
+             return View(await catService.findAll());
+         }
+
 
         // GET: Cat/Details/5
         public async Task<ActionResult> Details(int id)

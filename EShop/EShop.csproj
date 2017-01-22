@@ -367,13 +367,13 @@
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\Home\ShoppingCart.cshtml" />
     <Content Include="Views\Goods\Classify.cshtml" />
+    <Content Include="Views\Cat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="document\" />
     <Folder Include="Images\goods\" />
-    <Folder Include="Views\Cat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
