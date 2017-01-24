@@ -2,6 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="css/lanrenzhijia.css" rel="stylesheet" media="all">
 <style>
     span {
         color:red;
@@ -19,20 +20,60 @@
         position: relative;                     
         z-index: 1;
     }
+
+   /* Custom Styles */
+    ul.nav-tabs{
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    }
+    ul.nav-tabs li{
+        margin: 0;
+        border-top: 1px solid #ddd;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+    ul.nav-tabs li:first-child a{
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+    ul.nav-tabs.affix{
+        top: 30px; /* Set the top position of pinned element */
+    } 
 </style>
   
+<script>
+
+    $(document).ready(function () {
+        $('#nav').onePageNav();
+    });
+</script>
 <div>
     
         <ul class="nav nav-tabs nav-justified">
-            <li class="active">
-                <a href="#">所有商品分类</a>               
-            </li>
-            <li><a href="#">运动城</a></li>
-            <li><a href="#">户外馆</a></li>
-            <li><a href="#">体育馆</a></li>
-            <li><a href="#">骑行馆</a></li>
+            <li class="active"><a href="#section-1">所有分类</a></li>
+            <li><a href="#section-2">户外馆</a></li>
+            <li><a href="#section-3">骑行馆</a></li>
+            <li><a href="#section-4">体育馆</a></li>
+            <li><a href="#section-5">运动城</a></li>
+            <li><a href="#section-6">装备馆</a></li>
         </ul>
-    
+   
 </div> 
 <div id="myCarousel" class="carousel slide">
     <!-- 轮播（Carousel）指标 -->
@@ -63,72 +104,200 @@
         &rsaquo;
     </a>
 </div>
-<!--<img src="~/Images/yundong.jpg" style="position:relative;top:-330px;left:270px;height:330px;width:1000px"/> style="position:relative;top:-330px;z-index:-132"-->
-<div class="jumbotron" style="text-align:center">
-    <h4>您的专属活动</h4>
-    <div class="row">
-        <div class="col-sm-6 col-md-2 col-lg-offset-1">
-            <div class="thumbnail">
-                <img src="~/Images/hw.jpg" style="width:120px; height:120px; border-radius:50%;"
-                     alt="通用的占位符缩略图">
-                <div class="caption">
-                    <h3>户外馆</h3>
+
+<div class="container">
+    <div class="section">
+        <!--<img src="~/Images/yundong.jpg" style="position:relative;top:-330px;left:270px;height:330px;width:1000px"/> style="position:relative;top:-330px;z-index:-132"-->
+        <div class="jumbotron" style="text-align:center">
+            <h4  id="section-1">您的专属活动</h4>
+            <div class="row">
+                <div class="col-sm-6 col-md-2 col-lg-offset-1">
+                    <div class="thumbnail">
+                        <img src="~/Images/hw.jpg" style="width:120px; height:120px; border-radius:50%;"
+                             alt="通用的占位符缩略图">
+                        <div class="caption">
+                            <h3>户外馆</h3>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <img src="~/Images/qx.jpg" style="width:120px; height:120px; border-radius:50%;"
-                     alt="通用的占位符缩略图">
-                <div class="caption">
-                    <h3>骑行馆</h3>
+                <div class="col-sm-6 col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/Images/qx.jpg" style="width:120px; height:120px; border-radius:50%;"
+                             alt="通用的占位符缩略图">
+                        <div class="caption">
+                            <h3>骑行馆</h3>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <img src="~/Images/ty.jpg" style="width:120px; height:120px; border-radius:50%;"
-                     alt="通用的占位符缩略图">
-                <div class="caption">
-                    <h3>体育馆</h3>
+                <div class="col-sm-6 col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/Images/ty.jpg" style="width:120px; height:120px; border-radius:50%;"
+                             alt="通用的占位符缩略图">
+                        <div class="caption">
+                            <h3>体育馆</h3>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <img src="~/Images/yd.jpg" style="width:120px; height:120px; border-radius:50%;"
-                     alt="通用的占位符缩略图">
-                <div class="caption">
-                    <h3>运动城</h3>
+                <div class="col-sm-6 col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/Images/yd.jpg" style="width:120px; height:120px; border-radius:50%;"
+                             alt="通用的占位符缩略图">
+                        <div class="caption">
+                            <h3>运动城</h3>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <img src="~/Images/zb.jpg" style="width:120px; height:120px; border-radius:50%;"
-                     alt="通用的占位符缩略图">
-                <div class="caption">
-                    <h3>装备馆</h3>
+                <div class="col-sm-6 col-md-2">
+                    <div class="thumbnail">
+                        <img src="~/Images/zb.jpg" style="width:120px; height:120px; border-radius:50%;"
+                             alt="通用的占位符缩略图">
+                        <div class="caption">
+                            <h3>装备馆</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+   
+    <div class="section" >
+        <h2>品牌活动</h2>
+        <div class="col-md-3">
+            <img src="~/Images/ua5872eda3Nad78de54.jpg" alt="" style="height:350px;width:100%;">
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/glby.jpg" alt="" style="height:350px;width:100%;">
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/nk.jpg" alt="" style="height:350px;width:100%;">
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/bdfsd.jpg" alt="" style="height:350px;width:100%;">
+        </div>
+       
+    </div>
+    <hr />
+    <div class="section">
+        <h2 id="section-2">户外馆</h2>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/546.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+    </div>
+    <div class="section" >
+        <h2 id="section-3">骑行馆</h2>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/546.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="section-4">体育馆</h2>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/546.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="section-5">运动城</h2>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/546.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+    </div>
+    <div class="section">
+        <h2 id="section-6">装备馆</h2>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/5.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/2.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+        <div class="col-md-3">
+            <img src="~/Images/546.jpg" alt="" style="height:300px;width:100%;">
+            <h5>JX健身房高端健身器材 大型家用运动器械三人站力量综合训练器</h5>
+            <div style="color:red;">￥299.99</div>
+        </div>
+    </div>
 </div>
-
-<div class="row">
-    <div class="col-md-2 col-lg-offset-1">
-        <img src="~/Images/ua5872eda3Nad78de54.jpg" alt="First slide" style="height:300px;width:100%;">       
-        </div>
-    <div class="col-md-2">
-        <img src="~/Images/glby.jpg" alt="First slide" style="height:300px;width:100%;">
-        </div>
-    <div class="col-md-2">
-        <img src="~/Images/nk.jpg" alt="First slide" style="height:300px;width:100%;">
-        </div>
-    <div class="col-md-2">
-        <img src="~/Images/bdfsd.jpg" alt="First slide" style="height:300px;width:100%;">
-         </div>
-    <div class="col-md-2">
-        <img src="~/Images/tlz.jpg" alt="First slide" style="height:300px;width:100%;">
-        </div>
-</div>
+<ul class="nav nav-tabs nav-justified" data-spy="affix" data-offset-top="125" style="background-color:#000000;">
+    <li class="active"><a href="#section-1">所有分类</a></li>
+    <li><a href="#section-2">户外馆</a></li>
+    <li><a href="#section-3">骑行馆</a></li>
+    <li><a href="#section-4">体育馆</a></li>
+    <li><a href="#section-5">运动城</a></li>
+    <li><a href="#section-6">装备馆</a></li>
+</ul>

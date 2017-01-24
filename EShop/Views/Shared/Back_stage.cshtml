@@ -23,41 +23,34 @@
 
 </script>
 <div class="row" style="position:absolute;left:0px;">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseOne">
-                           后台系统管理菜单
+                           @Html.ActionLink("后台系统管理菜单", "Index", "Account")
                         </a>
                     </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">@Html.ActionLink("首页", "Index", "Account")</li>
-                            <li class="list-group-item">@Html.ActionLink("修改密码", "Index", "Account")</li>
-                            <li class="list-group-item">@Html.ActionLink("退出系统", "Index", "Account")</li>
-                        </ul>                       
-                    </div>
-                </div>
+                </div>               
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseTwo">
-                            用户管理
+                            <span class="glyphicon glyphicon-user"></span>用户
                         </a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">@Html.ActionLink("查看用户", "Lookupusers", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("用户列表", "Lookupusers", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("修改密码", "Index", "Account")</li>
                             <li class="list-group-item">@Html.ActionLink("注册", "Userregister", "Account")</li>
+                            <li class="list-group-item">@Html.ActionLink("退出系统", "Index", "Account")</li>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +60,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseThree">
-                            商品管理
+                            <span class="glyphicon glyphicon-briefcase"></span>商品
                         </a>
                     </h4>
                 </div>
@@ -92,7 +85,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseFour">
-                            订单管理
+                            <span class="glyphicon glyphicon-tasks"></span>订单
                         </a>
                     </h4>
                 </div>
@@ -113,7 +106,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseFive">
-                            @Html.ActionLink("评价管理", "Index", "Order")
+                            <span class="glyphicon glyphicon-pencil"></span> @Html.ActionLink("评价管理", "Index", "Order")
                         </a>
                     </h4>
                 </div>
@@ -123,7 +116,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseSix">
-                            @Html.ActionLink("帮助", "Index", "Order")
+                            <span class="glyphicon glyphicon-wrench"></span>@Html.ActionLink("帮助", "Index", "Order")
                         </a>
                     </h4>
                 </div>
@@ -132,7 +125,7 @@
     </div>
     
     <div class="container body-content">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <section>
                 @RenderBody()
             </section>
