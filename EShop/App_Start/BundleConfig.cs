@@ -26,12 +26,19 @@ namespace EShop
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/echart").Include(
+            bundles.Add(new ScriptBundle("~/bundles/Echart").Include(
                       "~/Scripts/ECharts/*.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Amaze UI").Include(
+                      "~/Scripts/Amaze UI/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Amaze UI").Include(
+                      "~/Content/Amaze UI/css/*.css"));
+
         }
     }
 }

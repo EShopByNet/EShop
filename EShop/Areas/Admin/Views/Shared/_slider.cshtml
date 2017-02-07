@@ -1,0 +1,141 @@
+﻿<ul class="am-list admin-sidebar-list" id="collapase-nav-bakebox">
+    <li>
+        <a href="/Admin/Home">
+            <span class="am-icon-home am-margin-left-sm"></span> 平台驾驶舱
+        </a>
+    </li>
+    <li class="am-panel">
+        <a class="am-cf"
+           data-am-collapse="{parent: '#collapase-nav-bakebox',target: '#collapse-nav-balance'}">
+            <span class="am-icon-file am-margin-left-sm"></span> 资金管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub "
+            id="collapse-nav-balance">
+            <li>
+                <a href="${ctx}/balance">
+                    <span class="am-icon-th am-margin-left-sm"></span> 全部
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/balance/accounted">
+                    <span class="am-icon-calendar am-margin-left-sm"></span> 已结算
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/balance/accounting" class="am-cf">
+                    <span class="am-icon-check am-margin-left-sm"></span> 结算中
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="Admin/Cat">
+            <span class="am-icon-pencil-square-o am-margin-left-sm"></span> 商品分类管理
+        </a>
+    </li>
+    <li class="am-panel">
+        <a class="am-cf"
+           data-am-collapse="{parent: '#collapase-nav-bakebox',target: '#collapse-nav-balance'}">
+            <span class="am-icon-file am-margin-left-sm"></span> 商品管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub "
+            id="collapse-nav-balance">
+            <li>
+                <a href="Admin/Goods">
+                    <span class="am-icon-th am-margin-left-sm"></span> 全部
+                </a>
+            </li>
+            <li>
+                <a href="Admin/Goods/Add" class="am-cf">
+                    <span class="am-icon-check am-margin-left-sm"></span> 新品发布
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/balance/accounted">
+                    <span class="am-icon-calendar am-margin-left-sm"></span> 已售罄
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/balance/accounting" class="am-cf">
+                    <span class="am-icon-check am-margin-left-sm"></span> 有货
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/balance/accounting" class="am-cf">
+                    <span class="am-icon-check am-margin-left-sm"></span> 已下架
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="am-panel">
+        <a class="am-cf"
+           data-am-collapse="{parent: '#collapase-nav-bakebox',target: '#collapse-nav-order'}">
+            <span class="am-icon-file am-margin-left-sm"></span> 订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+        </a>
+        <ul class="am-list am-collapse admin-sidebar-sub "
+            id="collapse-nav-order">
+            <li>
+                <a href="${ctx}/order">
+                    <span class="am-icon-calendar am-margin-left-sm"></span> 全部订单
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Paid" class="am-cf">
+                    <span class="am-icon-check am-margin-left-sm"></span> 已支付
+                    <!-- <span
+                    class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span> -->
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Making">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 制作中
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Canceled">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 已取消
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=NotPaid">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 未支付
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Sending">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 配送中
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Received">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 已完成
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Commented">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 已评价
+                </a>
+            </li>
+            <li>
+                <a href="${ctx}/order?state=Invalid">
+                    <span class="am-icon-puzzle-piece am-margin-left-sm"></span> 已失效
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="${ctx}/customer">
+            <span class="am-icon-table am-margin-left-sm"></span> 顾客信息
+        </a>
+    </li>
+    <li>
+        <a href="${ctx}/comment">
+            <span class="am-icon-pencil-square-o am-margin-left-sm"></span> 评价管理
+        </a>
+    </li>
+    <li>
+        <a href="javascript:document.getElementById('logoutForm').submit()">
+            <span class="am-icon-sign-out am-margin-left-sm"></span> 注销
+        </a>
+    </li>
+</ul>

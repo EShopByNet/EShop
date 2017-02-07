@@ -5,41 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Amaze UI")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/ajaxUpload")
     @Scripts.Render("~/bundles/modernizr")
-
+    
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("EShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="container-fluid body-content">
+        <div class="row content">
+            <div class="col-md-2">
+                @Html.Partial("_Slider")
+            </div>
+            <div class="col-md-10">
+                <section id="content" class="border">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                <footer style="text-align:center; color:#9d9d9d;margin-top:12px">
+                    <p>&copy; @DateTime.Now.Year - EShop</p>
+                </footer>
+            </div>
+        </div>
     </div>
-    
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            var height = $(document.body).height() * 0.6
+            $("#content").css("min-height", height);
+        })
+    </script>
 </body>
+@Scripts.Render("~/bundles/Amaze UI")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </html>

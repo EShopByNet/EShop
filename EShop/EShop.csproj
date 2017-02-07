@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatController.cs" />
@@ -209,9 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701070247127_InitialCreate.cs" />
-    <Compile Include="Migrations\201701070247127_InitialCreate.Designer.cs">
-      <DependentUpon>201701070247127_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201702070548132_InitialCreate.cs" />
+    <Compile Include="Migrations\201702070548132_InitialCreate.Designer.cs">
+      <DependentUpon>201702070548132_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -281,17 +282,14 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Admin\Views\Cat\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Cat\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Cat\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Cat\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Cat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Slider.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -369,20 +367,27 @@
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\Home\ShoppingCart.cshtml" />
     <Content Include="Views\Goods\Classify.cshtml" />
+    <Content Include="Views\Cat\Create.cshtml" />
+    <Content Include="Views\Cat\Delete.cshtml" />
+    <Content Include="Views\Cat\Details.cshtml" />
+    <Content Include="Views\Cat\Edit.cshtml" />
+    <Content Include="Views\Cat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Cat\" />
+    <Folder Include="Content\Amaze UI\css\" />
+    <Folder Include="Content\Amaze UI\fonts\" />
     <Folder Include="document\" />
     <Folder Include="Images\goods\" />
-    <Folder Include="Views\Cat\" />
+    <Folder Include="Scripts\Amaze UI\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701070247127_InitialCreate.resx">
-      <DependentUpon>201701070247127_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702070548132_InitialCreate.resx">
+      <DependentUpon>201702070548132_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,8 +39,9 @@ namespace EShop.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        parentId = c.Int(nullable: false),
+                        type = c.Int(nullable: false),
                         name = c.String(nullable: false, maxLength: 20, unicode: false),
+                        themePic = c.String(unicode: false),
                         isShow = c.Boolean(nullable: false),
                         isDelete = c.Boolean(nullable: false),
                     })

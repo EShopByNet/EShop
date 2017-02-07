@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.border {
+    border-style:solid;
+    border-width:thin;
+    border-color:#acb2ae;
+}
+.content {
+    padding-top: 20px;
+    padding-left: 10px;
+
+}

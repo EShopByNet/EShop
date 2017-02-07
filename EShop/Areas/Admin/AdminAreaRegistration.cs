@@ -17,7 +17,7 @@ namespace EShop.Areas.Admin
             context.MapRoute(
                 "Admin",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new string[] { "EShop.Areas.Admin.Controllers" }
             );
         }
