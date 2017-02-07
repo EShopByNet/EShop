@@ -1,11 +1,11 @@
-﻿@model IEnumerable<EShop.Models.Cat>
+﻿@{
+    Layout = "~/Views/Shared/Back_stage.cshtml";
+}
+
 <br />
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增分类</button>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-@using (Html.BeginForm("Create", "Cat", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,25 +16,58 @@
                 <div class="form-group">
                     <div class="col-md-2">分类名称</div>
                     <div class="col-md-10">
-                        <input type="text" name="name"/>
+                        <input type="text" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">主题图片</div>
+                    <div class="col-md-2">分类图片</div>
                     <div class="col-md-10">
-                        <div id="picPreview"></div>
-                        <input type="file" style="margin-bottom:10px;" name="themePic" id="pic"/>
+
+                        <input type="file" style="margin-bottom:10px;" name="image" id="" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-2">分类馆</div>
+                    <div class="col-md-2">上级分类</div>
                     <div class="col-md-10">
-                        <select class="form-control" name="type">
-                            <option value="1">运动城</option>
-                            <option value="2">户外馆</option>
-                            <option value="3">体育馆</option>
-                            <option value="4">骑行馆</option>
-                            <option value="5">装备馆</option>
+                        <select class="form-control">
+                            <option>运动城</option>
+                            <option>户外馆</option>
+                            <option>体育馆</option>
+                            <option>骑行馆</option>
+                            <option>装备馆</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">商品类型</div>
+                    <div class="col-md-10">
+                        <select class="form-control">
+                            <optgroup label="运动城">
+                                <option>跑步机</option>
+                                <option>划船器</option>
+                                <option>动感单车</option>
+                                <option>腰腹板</option>
+                            </optgroup>
+                            <optgroup label="户外馆">
+                                <option>登山杖</option>
+                                <option>望远镜</option>
+                                <option>帐篷</option>
+                            </optgroup>
+                            <optgroup label="体育馆">
+                                <option>羽毛球</option>
+                                <option>篮球</option>
+                                <option>兵乓球</option>
+                                <option>排球</option>
+                            </optgroup>
+                            <optgroup label="骑行馆">
+                                <option>山地自行车</option>
+                            </optgroup>
+                            <optgroup label="装备馆">
+                                <option>负重沙袋</option>
+                                <option>护腿装备</option>
+                                <option>硅胶跑步装备</option>
+                            </optgroup>
                         </select>
 
                     </div>
@@ -46,11 +79,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-}
-    
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
+@using (Html.BeginForm("Classify", "Goods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -76,56 +111,14 @@
         </tbody>
     </table>
 
+}
 
 <div>
     @Html.ActionLink("返回上一步", "Index")
 </div>
-<script>
-    $("#pic").change(function () {
-        var file = this.files[0];
-        if (hasFile(file)) {
-            if (!isPicture(file)) {
-                alert("只支持图片文件的上传");
-            } else {
-                imgPreview(file);
-            }
-        }
-    })
 
-    function imgPreview(file) {
-        var reader = new FileReader();
-        if (reader == "undefined" || reader == "") {
-            var lab = $("<lable/>");
-            lab.html("浏览器不支持预览");
-        } else {
-            reader.readAsDataURL(file);
-            reader.onload = function (e) {
-                var preview = $("<img/>");
-                preview.attr("src", e.target.result);
-                preview.css({
-                    "height": "100",
-                    "width": "100"
-                })
-                preview.appendTo($("#picPreview"));
-            };
-        }
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
-    function hasFile(file) {
-        if (file == "") {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
-    function isPicture(file) {
-        var imageType = /^image\//;
-        if (!imageType.test(file.type)) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-</script>
