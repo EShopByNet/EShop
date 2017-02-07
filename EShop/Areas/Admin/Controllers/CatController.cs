@@ -7,8 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EShop.Models;
-using System.Threading.Tasks;
 using EShop.Service;
+using System.Threading.Tasks;
 
 namespace EShop.Areas.Admin.Controllers
 {
@@ -70,11 +70,11 @@ namespace EShop.Areas.Admin.Controllers
                     string path = fileUpload.Upload(file, Server.MapPath(subFolder));
                     cat.themePic = path;
                 }
-                if(await catService.create(cat))
+                if (await catService.create(cat))
                 {
                     return true;
                 }
-                else 
+                else
                 {
                     return false;
                 }
@@ -91,7 +91,7 @@ namespace EShop.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Cat cat = await catService.findOne(id.Value);
-                if (cat == null)
+            if (cat == null)
             {
                 return HttpNotFound();
             }
@@ -146,5 +146,6 @@ namespace EShop.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

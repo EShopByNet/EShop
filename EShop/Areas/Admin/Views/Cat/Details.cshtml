@@ -1,0 +1,66 @@
+﻿@model EShop.Models.Cat
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Cat</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.type)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.type)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.themePic)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.themePic)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isShow)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isShow)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isDelete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isDelete)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

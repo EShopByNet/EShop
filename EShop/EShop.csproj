@@ -290,6 +290,11 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Slider.cshtml" />
+    <Content Include="Areas\Admin\Views\Cat\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Cat\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Cat\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Cat\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Cat\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -375,7 +380,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Cat\" />
     <Folder Include="Content\Amaze UI\css\" />
     <Folder Include="Content\Amaze UI\fonts\" />
     <Folder Include="document\" />
