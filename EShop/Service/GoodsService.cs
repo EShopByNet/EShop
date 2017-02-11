@@ -150,7 +150,7 @@ namespace EShop.Service
             {
                 size = Constants.PAGE_SIZE;
             }
-            List<Cat> cats = db.Database.SqlQuery<Cat>("SELECT * FROM cat c WHERE c.id IN (SELECT g.catId FROM goods g)").ToList();
+            List<Cat> cats = db.Database.SqlQuery<Cat>("SELECT * FROM Cat c WHERE c.id IN (SELECT g.catId FROM goods g)").ToList();
             List<GoodsData> goodsDataList = new List<GoodsData>();
             GoodsData goodsData = null;
             cats.ForEach(n =>
