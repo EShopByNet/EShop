@@ -19,9 +19,13 @@ namespace EShop.Controllers
 
         private GoodsService goodsService = new GoodsService();
 
-        public ActionResult Index()
+        private CatService catService = new CatService();
+
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<CatData> catdata = await catService.findAll();
+            ViewBag.Cat = catdata;
+            return View(goodsService.findCatShopBySize(5));
         }
 
         public async Task<ActionResult> About(string id)

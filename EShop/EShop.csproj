@@ -200,7 +200,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CatController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GoodsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CatController.cs" />
@@ -210,19 +213,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702070548132_InitialCreate.cs" />
-    <Compile Include="Migrations\201702070548132_InitialCreate.Designer.cs">
-      <DependentUpon>201702070548132_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201702111228065_InitialCreate.cs" />
+    <Compile Include="Migrations\201702111228065_InitialCreate.Designer.cs">
+      <DependentUpon>201702111228065_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Cat.cs" />
-    <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\EShopDbContext.cs" />
     <Compile Include="Models\Goods.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CartService.cs" />
@@ -295,6 +298,16 @@
     <Content Include="Areas\Admin\Views\Cat\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Cat\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Cat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Goods\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -380,6 +393,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Error\" />
     <Folder Include="Content\Amaze UI\css\" />
     <Folder Include="Content\Amaze UI\fonts\" />
     <Folder Include="document\" />
@@ -390,8 +404,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702070548132_InitialCreate.resx">
-      <DependentUpon>201702070548132_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702111228065_InitialCreate.resx">
+      <DependentUpon>201702111228065_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

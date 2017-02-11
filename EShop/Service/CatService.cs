@@ -42,9 +42,59 @@ namespace EShop.Service
         /// 获取商品的所有分类
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Cat>> findAll()
+        public async Task<List<CatData>> findAll()
         {
-            return await db.Cat.ToListAsync();
+            List<Cat> cats = await db.Cat.ToListAsync();
+            List<CatData> catDatas = new List<CatData>();
+            CatData catdata = null;
+            cats.ForEach((n) => {
+                if (n.parentId.Equals(0))
+                {
+                    catdata = new CatData();
+                    catdata.cat = n;
+                    catdata.child = this.findChild(cats, n.id);
+                    catDatas.Add(catdata);
+                }
+            });
+            return catDatas;
+        }
+
+        /// <summary>
+        /// 查找分类集合中的子分类
+        /// </summary>
+        /// <param name="cats"></param>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
+        private List<Cat> findChild(List<Cat> cats, int parentId)
+        {
+            List<Cat> child = new List<Cat>();
+            cats.ForEach((n) => {
+                if (n.parentId.Equals(parentId))
+                {
+                    child.Add(n);
+                }
+            });
+            return child;
+        }
+
+        /// <summary>
+        /// 查询父级分类列表
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public async Task<List<Cat>> findParent()
+        {
+            return await db.Cat.Where(n => n.parentId.Equals(0)).ToListAsync();
+        }
+
+        /// <summary>
+        /// 查询父分类下的子分类
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        public async Task<List<Cat>> findChild(int parent)
+        {
+            return await db.Cat.Where(n => n.parentId.Equals(parent)).ToListAsync();
         }
 
         /// <summary>

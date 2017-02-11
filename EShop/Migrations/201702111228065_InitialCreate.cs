@@ -39,21 +39,12 @@ namespace EShop.Migrations
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        type = c.Int(nullable: false),
                         name = c.String(nullable: false, maxLength: 20, unicode: false),
+                        parentId = c.Int(nullable: false),
+                        description = c.String(unicode: false),
                         themePic = c.String(unicode: false),
                         isShow = c.Boolean(nullable: false),
                         isDelete = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.id);
-            
-            CreateTable(
-                "dbo.Detail",
-                c => new
-                    {
-                        id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        descript = c.String(unicode: false, storeType: "text"),
-                        pics = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -63,11 +54,24 @@ namespace EShop.Migrations
                     {
                         id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                         name = c.String(nullable: false, maxLength: 25, storeType: "nvarchar"),
-                        image = c.String(nullable: false, unicode: false),
+                        remarks = c.String(maxLength: 100, storeType: "nvarchar"),
+                        image = c.String(unicode: false),
                         costPrice = c.Double(nullable: false),
                         price = c.Double(nullable: false),
                         catId = c.Int(nullable: false),
-                        detailId = c.String(nullable: false, maxLength: 128, unicode: false),
+                        selesCount = c.Int(nullable: false),
+                        comment = c.Int(nullable: false),
+                        sealCountAftermonth = c.Int(nullable: false),
+                        praise = c.Int(nullable: false),
+                        collectCount = c.Int(nullable: false),
+                        inventory = c.Int(nullable: false),
+                        area = c.String(unicode: false),
+                        createTime = c.String(unicode: false),
+                        publishTime = c.String(unicode: false),
+                        modifyTime = c.String(unicode: false),
+                        detail = c.String(unicode: false),
+                        isPublish = c.Boolean(nullable: false),
+                        isDelete = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -90,14 +94,29 @@ namespace EShop.Migrations
                 .PrimaryKey(t => t.id);
             
             CreateTable(
-                "dbo.Orders",
+                "dbo.Order",
                 c => new
                     {
                         id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        uid = c.String(nullable: false, maxLength: 128, unicode: false),
                         userId = c.String(nullable: false, maxLength: 128, unicode: false),
                         goodsId = c.String(nullable: false, maxLength: 128, unicode: false),
+                        number = c.Int(nullable: false),
+                        price = c.Double(nullable: false),
+                        orderState = c.Int(nullable: false),
+                        consigneeName = c.String(unicode: false),
+                        consigneeAddress = c.String(unicode: false),
+                        consigneePhone = c.String(nullable: false, unicode: false),
+                        message = c.String(unicode: false),
                         createDate = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
+                "dbo.OrderItem",
+                c => new
+                    {
+                        id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        goodsId = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -207,10 +226,10 @@ namespace EShop.Migrations
             DropTable("dbo.Store");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Orders");
+            DropTable("dbo.OrderItem");
+            DropTable("dbo.Order");
             DropTable("dbo.Member");
             DropTable("dbo.Goods");
-            DropTable("dbo.Detail");
             DropTable("dbo.Cat");
             DropTable("dbo.Cart");
             DropTable("dbo.Album");

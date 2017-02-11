@@ -1,66 +1,136 @@
-﻿@model EShop.Models.Cat
+﻿@model IEnumerable<EShop.Models.Cat>
+<div>
+    <br />
+    
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增商品种类</button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        @using (Html.BeginForm("Create", "Cat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">添加商品种类</h4>
+                    </div><br />
+                    <div class="modal-body">
+                        <div class="form-horizontal" style="margin-left:10px;">
+                            <div class="form-group">
+                                <div class="col-md-2">商品种类</div>
+                                <div class="col-md-10">
+                                    <input type="hidden" value="@ViewBag.Parentid" name="parentId" />
+                                    <input type="text" name="name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">主题图片</div>
+                                <div class="col-md-10">
+                                    <div id="picPreview"></div>
+                                    <input type="file" style="margin-bottom:10px;" name="themePic" id="pic" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">描述</div>
+                                <div class="col-md-10">
+                                    <textarea name="description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="createSubmit">Create</button>
+                    </div>
+                </div>
+            </div>
+        }
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Cat</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.type)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.type)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.themePic)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.themePic)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.isShow)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.isShow)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.isDelete)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.isDelete)
-            </dd>
-    
-        </dl>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        <img src="@item.themePic" height="50" width="50" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div>
+        @Html.ActionLink("返回上一步", "Index")
+    </div>
+</div>
+<script>
+    $("#pic").change(function () {
+        var file = this.files[0];
+        if (hasFile(file)) {
+            if (!isPicture(file)) {
+                alert("只支持图片文件的上传");
+            } else {
+                imgPreview(file);
+            }
+        }
+    })
+
+    function imgPreview(file) {
+        var reader = new FileReader();
+        if (reader == "undefined" || reader == "") {
+            var lab = $("<lable/>");
+            lab.html("浏览器不支持预览");
+        } else {
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var preview = $("<img/>");
+                preview.attr("src", e.target.result);
+                preview.css({
+                    "height": "100",
+                    "width": "100"
+                })
+                preview.appendTo($("#picPreview"));
+            };
+        }
+    }
+
+    function hasFile(file) {
+        if (file == "") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function isPicture(file) {
+        var imageType = /^image\//;
+        if (!imageType.test(file.type)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+</script>

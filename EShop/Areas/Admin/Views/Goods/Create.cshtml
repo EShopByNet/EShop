@@ -1,0 +1,168 @@
+﻿@model EShop.Models.Goods
+
+<!DOCTYPE html>
+<div>
+    @using (Html.BeginForm("Create", "Goods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Goods</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">主题图</label>
+                <div class="col-md-10">
+                    <div id="picPreview"></div>
+                    <input type="file" style="margin-bottom:10px;" name="image" id="pic" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.costPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.costPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.costPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">商品种类</label>
+                <div class="col-md-10">
+                    <section id="catChose">
+                        <select name="catId">
+                        </select>
+                    </section>
+                    @Html.ValidationMessageFor(model => model.catId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $.getJSON("/Admin/Cat/GetParent", function (json) {
+                var cat = $("select[name = 'catId']");
+                if (null != json) {
+                    $.each(json, function (index, data) {
+                        var option = $("<option/>");
+                        option.val(data.id);
+                        option.html(data.name);
+                        option.appendTo(cat);
+                    });
+                }
+            });
+        })
+
+        $("select[name = 'catId']").change(function () {
+            var cat = $(this).val();
+            $(this).attr("name", "parentId")
+            $.getJSON("/Admin/Cat/GetChild/"+cat, function (json) {
+                if (null != json && json.length > 0) {
+                    var select = $("<select/>");
+                    select.attr("name", "catId");
+                    $.each(json, function (index, data) {
+                        var option = $("<option/>");
+                        option.val(data.id);
+                        option.html(data.name);
+                        option.appendTo(select);
+                    });
+                    select.appendTo($("#catChose"));
+                }
+            });
+        })
+
+        $("#pic").change(function () {
+            var file = this.files[0];
+            if (hasFile(file)) {
+                if (!isPicture(file)) {
+                    alert("只支持图片文件的上传");
+                } else {
+                    imgPreview(file);
+                }
+            }
+        })
+
+        function imgPreview(file) {
+            var reader = new FileReader();
+            if (reader == "undefined" || reader == "") {
+                var lab = $("<lable/>");
+                lab.html("浏览器不支持预览");
+            } else {
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    var preview = $("<img/>");
+                    preview.attr("src", e.target.result);
+                    preview.css({
+                        "height": "100",
+                        "width": "100"
+                    })
+                    preview.appendTo($("#picPreview"));
+                };
+            }
+        }
+
+        function hasFile(file) {
+            if (file == "") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function isPicture(file) {
+            var imageType = /^image\//;
+            if (!imageType.test(file.type)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+
+</div>

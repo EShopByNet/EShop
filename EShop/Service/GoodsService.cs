@@ -36,7 +36,7 @@ namespace EShop.Service
         {
             try
             {
-                goods.id = new Guid().ToString();
+                goods.id = Guid.NewGuid().ToString();
                 db.Goods.Add(goods);
                 await db.SaveChangesAsync();
             }
@@ -90,10 +90,18 @@ namespace EShop.Service
         }
 
         /// <summary>
-        /// 查询一个商品的信息信息
+        /// 查询一个商品的信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        public GoodsData findOneDetail(string id)
+        {
+            GoodsData goodsData = new GoodsData();
+            goodsData.goods = db.Goods.Find(id);
+            goodsData.albums = db.Album.Where(n => n.goodsId.Equals(id)).ToList();
+            return goodsData;
+        }
+
         public async Task<Goods> findOne(string id)
         {
             Goods goods = await db.Goods.FindAsync(id);
@@ -131,6 +139,32 @@ namespace EShop.Service
         }
 
         /// <summary>
+        /// 查询分类下的商品信息
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="pageNo"></param>
+        /// <returns></returns>
+        public List<GoodsData> findCatShopBySize(int size)
+        {
+            if (size <= 0)
+            {
+                size = Constants.PAGE_SIZE;
+            }
+            List<Cat> cats = db.Database.SqlQuery<Cat>("SELECT * FROM cat c WHERE c.id IN (SELECT g.catId FROM goods g)").ToList();
+            List<GoodsData> goodsDataList = new List<GoodsData>();
+            GoodsData goodsData = null;
+            cats.ForEach(n =>
+            {
+                goodsData = new GoodsData();
+                List<Goods> goodsList = db.Goods.Where(x => x.catId.Equals(n.id)).Take(size).ToList();
+                goodsData.cat = n;
+                goodsData.goodsList = goodsList;
+                goodsDataList.Add(goodsData);
+            });
+            return goodsDataList;
+        }
+
+        /// <summary>
         /// 商品的条件搜索
         /// </summary>
         /// <param name="keyWords"></param>
@@ -139,7 +173,7 @@ namespace EShop.Service
         {
             if (!string.IsNullOrWhiteSpace(keyWords) || !string.IsNullOrEmpty(keyWords))
             {
-                List<Goods> goods = await db.Goods.Where(n => n.detailId.Contains(keyWords)).Where(n => n.name.Contains(keyWords)).ToListAsync();
+                List<Goods> goods = await db.Goods.Where(n => n.detail.Contains(keyWords)).Where(n => n.name.Contains(keyWords)).ToListAsync();
                 return goods;
             }
             else

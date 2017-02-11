@@ -80,6 +80,24 @@ namespace EShop.Controllers
             }
         }
 
+        /// <summary>
+        /// 判断用户是否登录
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public JsonResult IsLogin()
+        {
+            bool isLogin = User.Identity.IsAuthenticated;
+            if (isLogin)
+            {
+                return Json("ok", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("error", JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         [AllowAnonymous]
         // GET: Account/Register

@@ -1,84 +1,85 @@
 ﻿@model IEnumerable<EShop.Models.Cat>
-<br />
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增分类</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    @using (Html.BeginForm("Create", "Cat", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">添加分类</h4>
-                </div><br />
-                <div class="form-horizontal" style="margin-left:10px;">
-                    <div class="form-group">
-                        <div class="col-md-2">分类名称</div>
-                        <div class="col-md-10">
-                            <input type="text" name="name" />
+<div>
+    <br />
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增商品馆</button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        @using (Html.BeginForm("Create", "Cat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">添加商品馆</h4>
+                    </div><br />
+                    <div class="modal-body">
+                        <div class="form-horizontal" style="margin-left:10px;">
+                            <div class="form-group">
+                                <div class="col-md-2">馆名称</div>
+                                <div class="col-md-10">
+                                    <input type="text" name="name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">主题图片</div>
+                                <div class="col-md-10">
+                                    <div id="picPreview"></div>
+                                    <input type="file" style="margin-bottom:10px;" name="themePic" id="pic" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">描述</div>
+                                <div class="col-md-10">
+                                    <textarea name="description" ></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-2">主题图片</div>
-                        <div class="col-md-10">
-                            <div id="picPreview"></div>
-                            <input type="file" style="margin-bottom:10px;" name="themePic" id="pic" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">分类馆</div>
-                        <div class="col-md-10">
-                            <select class="form-control" name="type">
-                                <option value="1">运动城</option>
-                                <option value="2">户外馆</option>
-                                <option value="3">体育馆</option>
-                                <option value="4">骑行馆</option>
-                                <option value="5">装备馆</option>
-                            </select>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="保存" class="btn btn-default" />
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="createSubmit">Create</button>
                     </div>
                 </div>
             </div>
-        </div>
-    }
+        }
 
-</div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>名称</th>
-            <th>类型</th>
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>哒哒哒</td>
-            <td>下次</td>
-            <td>删除|修改</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>下次</td>
-            <td>z</td>
-            <td>删除|修改</td>
-        </tr>
-    </tbody>
-</table>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var item in Model)
+           {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    <img src="@item.themePic" height="50" width="50" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+           }
+        </tbody>
+    </table>
 
 
-<div>
-    @Html.ActionLink("返回上一步", "Index")
+    <div>
+        @Html.ActionLink("返回上一步", "Index")
+    </div>
 </div>
 <script>
     $("#pic").change(function () {
@@ -128,4 +129,5 @@
             return true;
         }
     }
+
 </script>

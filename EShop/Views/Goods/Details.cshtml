@@ -1,21 +1,144 @@
-﻿@model EShop.Models.Goods
+﻿@model EShop.Models.GoodsData
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container-fluid row">
+    <div class="row">
+        <div class="col-md-4" style="padding-left:10px">
+            <div class="row">
+                <img src="@(Model.goods.image)" style="height:400px; width:400px" />
+            </div>
+            <div class="row">
+                @foreach (var item in Model.albums)
+                {
+                    <span>
+                        <img src="@(item.small)" />
+                    </span>
+                }
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div>
+                    <label>@Model.goods.name</label>
+                </div>
+                <div>
+                    <label>@Model.goods.remarks</label>
+                </div>
+                <div>
+                    @Html.LabelFor(Model => Model.goods.area)
+                    <label>@Model.goods.area</label>
+                </div>
+                <div>
+                    @Html.LabelFor(Model => Model.goods.costPrice)
+                    <label>@Model.goods.costPrice</label>
+                </div>
+                <div>
+                    @Html.LabelFor(Model => Model.goods.price)
+                    <label>@Model.goods.price</label>
+                </div>
+                <div>
+                    @Html.LabelFor(Model => Model.goods.inventory)
+                    @Html.DisplayTextFor(Model => Model.goods.inventory);
+                </div>
+                <div>
+                    <span>
+                        @Html.LabelFor(Model => Model.goods.sealCountAftermonth)
+                        @Html.DisplayTextFor(Model => Model.goods.sealCountAftermonth);
+                    </span>
+                    <span>
+                        @Html.LabelFor(Model => Model.goods.comment)
+                        @Html.DisplayTextFor(Model => Model.goods.comment);
+                    </span>
+                    <span>
+                        @Html.LabelFor(Model => Model.goods.collectCount)
+                        @Html.DisplayTextFor(Model => Model.goods.collectCount);
+                    </span>
+                    <span>
+                        @Html.LabelFor(Model => Model.goods.praise)
+                        @Html.DisplayTextFor(Model => Model.goods.praise);
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <label>数量:</label>
+                @{
+                    if (Model.goods.inventory <= 0)
+                    {
+                        <label>无货</label>
+                    }
+                    else
+                    {
+                        <input type="number" id="numberChose" name="number" min="1" value="1" max="@Model.goods.inventory" />
+                    }
+                }
 
-<div>
-    <h4>Goods</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-    </dl>
+            </div>
+            <div class="row">
+                <input class="btn btn-default" value="立即购买" />
+                @{
+                    if (Model.goods.inventory <= 0)
+                    {
+                        <input class="btn btn-primary disabled" disabled="disabled" value="加入购物车" />
+                    }
+                    else
+                    {
+                        <input type="submit" class="btn btn-primary active" value="加入购物车" onclick="AddCart('@Model.goods.id')" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top:50px">
+        <h4>Goods</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.goods.name)
+            </dt>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<script type="text/javascript">
+    function AddCart(obj) {
+        var isLogin = null;
+        $.get("/Account/IsLogin", function (data) {
+            if (data == "ok" && data != null) {
+                var number = $("#numberChose").val();
+                if (null != obj || "undefine" != obj || "undefine" != number) {
+                    if (number <= 0) {
+                        alert("请选择商品数量")
+                    }
+                    else {
+                        $.ajax({
+                            type: "post",
+                            url: "/Cart/Add",
+                            data:{
+                                goodsId: obj,
+                                number: number
+                            },
+                            success: function (msg) {
+                                if (msg == "ok") {
+                                    alert("已经添加到购物车");
+                                }
+                                else {
+                                    alert("error");
+                                }
+                            },
+                            error: function () {
+                                alert("error");
+                            }
+                        });
+                    }
+
+                }
+            }
+            else {
+                alert("请先登录在操作!");
+            }
+        });
+    }
+
+</script>

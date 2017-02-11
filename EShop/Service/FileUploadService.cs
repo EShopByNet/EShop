@@ -34,7 +34,7 @@ namespace EShop.Service
             }
             string fullPath = subFolder + file.FileName;
             file.SaveAs(fullPath);
-            return fullPath;
+            return fullPath.Substring(AppDomain.CurrentDomain.BaseDirectory.Length-1);
         }
 
     }

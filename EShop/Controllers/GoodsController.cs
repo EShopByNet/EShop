@@ -18,33 +18,33 @@ namespace EShop.Controllers
         private GoodsService goodsService = new GoodsService();
 
         /// <summary>
-        /// GET: Goods
         /// 获取商品列表
         /// </summary>
         /// <returns></returns>
+        //  GET: Goods
         public async Task<ActionResult> Index()
         {           
             return View(await goodsService.list());
         }
 
         /// <summary>
-        /// GET: Goods/Details/5
         /// 获取商品详细信息
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<ActionResult> Details(string id)
+        //  GET: Goods/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = await goodsService.findOne(id);
-            if (goods == null)
+            GoodsData doods = goodsService.findOneDetail(id);
+            if (doods == null)
             {
                 return HttpNotFound();
             }
-            return View(goods);
+            return View(doods);
         }
 
         /// <summary>

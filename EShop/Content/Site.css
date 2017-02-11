@@ -27,6 +27,7 @@ textarea {
     border-style:solid;
     border-width:thin;
     border-color:#acb2ae;
+    padding:15px;
 }
 .content {
     padding-top: 20px;

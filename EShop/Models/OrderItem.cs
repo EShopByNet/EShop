@@ -7,19 +7,14 @@ using System.Web;
 
 namespace EShop.Models
 {
-    [Table("Detail")]
-    public class Detail
+    [Table("OrderItem")]
+    public class OrderItem
     {
 
         [Key]
         public string id { get; set; }
 
-        [Display(Name ="描述")]
-        [Column(TypeName = "text")]
-        public string descript { get; set; }
-
-        public string pics { get; set; }
-
+        public string goodsId { get; set; }
 
     }
 }

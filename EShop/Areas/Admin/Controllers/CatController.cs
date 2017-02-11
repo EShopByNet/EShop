@@ -26,7 +26,34 @@ namespace EShop.Areas.Admin.Controllers
         // GET: Admin/Cat
         public async Task<ActionResult> Index()
         {
-            return View(await catService.findAll());
+            return View(await catService.findParent());
+        }
+
+        /// <summary>
+        /// 获取分类的子分类
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Admin/Cat/GetChild/2
+        public async Task<JsonResult> GetChild(int? id)
+        {
+            if (id == null)
+            {
+                return Json("",JsonRequestBehavior.AllowGet);
+            }
+            List<Cat> cat = await catService.findChild(id.Value);
+            return Json(cat,JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 获取父级分类
+        /// </summary>
+        /// <returns></returns>
+        // GET: Admin/Cat/GetParent
+        public async Task<JsonResult> GetParent()
+        {
+            List<Cat> cat = await catService.findParent();
+            return Json(cat, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -47,7 +74,11 @@ namespace EShop.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(cat);
+            else
+            {
+                 ViewBag.Parentid = id.Value;
+                 return View(await catService.findChild(id.Value));
+            }
         }
 
 
@@ -59,7 +90,7 @@ namespace EShop.Areas.Admin.Controllers
         // POST: Admin/Cat/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<bool> Create([Bind(Exclude = "themePic")] Cat cat)
+        public async Task<ActionResult> Create([Bind(Exclude = "themePic")] Cat cat)
         {
             if (ModelState.IsValid)
             {
@@ -72,15 +103,15 @@ namespace EShop.Areas.Admin.Controllers
                 }
                 if (await catService.create(cat))
                 {
-                    return true;
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    return false;
+                    return RedirectToAction("Index","Error");
                 }
             }
 
-            return false;
+            return RedirectToAction("Index", "Error");
         }
 
         // GET: Admin/Cat/Edit/5

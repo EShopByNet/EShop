@@ -17,21 +17,22 @@ namespace EShop.Models
         public int id { get; set; }
 
         [Required]
-        public int type { get; set; }
-
-        [Required]
-        [Display(Name ="名称")]
+        [Display(Name = "名称")]
         [Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string name { get; set; }
 
-        [Display(Name ="主题图片")]
+        public int parentId { get; set; }
+
+        public string description { get; set; }
+
+        [Display(Name = "主题图片")]
         public string themePic { get; set; }
 
-        [Display(Name ="是否显示")]
+        [Display(Name = "是否显示")]
         public bool isShow { get; set; }
 
-        [Display(Name ="是否删除")]
+        [Display(Name = "是否删除")]
         public bool isDelete { get; set; }
 
         public static implicit operator List<object>(Cat v)
@@ -39,5 +40,14 @@ namespace EShop.Models
             throw new NotImplementedException();
         }
 
+    }
+
+    /// <summary>
+    /// 分类数据
+    /// </summary>
+    public class CatData
+    {
+        public Cat cat { get; set; }
+        public List<Cat> child { get; set; }
     }
 }

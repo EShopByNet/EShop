@@ -64,7 +64,7 @@ namespace EShop.Models
 
         public DbSet<Order> Order { get; set; }
 
-        public DbSet<Detail> Detail { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
 
         public DbSet<Member> Member { get; set; }
 

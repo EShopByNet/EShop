@@ -28,7 +28,7 @@ namespace EShop.Service
             try
             {
                 order.createDate = new DateTime();
-                order.uid = new Guid().ToString();
+                order.id = new Guid().ToString();
                 db.Order.Add(order);
                 await db.SaveChangesAsync();
             }

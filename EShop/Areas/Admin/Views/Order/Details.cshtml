@@ -1,0 +1,54 @@
+﻿@model EShop.Models.Order
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.uid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.uid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.userId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.userId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.goodsId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.goodsId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.createDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.createDate)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
