@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace EShop.Service
 {
@@ -18,19 +20,37 @@ namespace EShop.Service
 
         private EShopDbContext db = new EShopDbContext();
 
+        public IPrincipal User { get; }
+
         /// <summary>
         /// 创建一个新的订单
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        public async Task<bool> create(Order order)
+        public bool create(List<Cart> cart)
         {
             try
             {
-                order.createDate = new DateTime();
-                order.id = new Guid().ToString();
+                OrderItem orderItem = new OrderItem();
+                Order order = new Order();
+                order.id = Guid.NewGuid().ToString();
+                cart.ForEach(n =>
+                {
+                    Goods goods = db.Goods.Find(n.id);
+                    orderItem.orderid = order.id;
+                    orderItem.goodsId = n.goodsId;
+                    orderItem.number = n.number;
+                    orderItem.id = Guid.NewGuid().ToString();
+                    orderItem.price = goods.price * n.number;
+                    db.OrderItem.Add(orderItem);
+                    order.price += orderItem.price;
+                    order.number += order.number;
+                });
+                order.userId = User.Identity.GetUserId();
+                order.orderState = OrderState.NotPaid;
+                order.createDate = DateTime.Now;
                 db.Order.Add(order);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (Exception e)
             {
@@ -95,9 +115,9 @@ namespace EShop.Service
         /// 查询所有订单
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Order>> findAll()
+        public List<Order> findAll(string userId)
         {
-            List<Order> orders = await db.Order.ToListAsync();
+            List<Order> orders = db.Order.Where(n => n.userId.Equals(userId)).ToList() ;
             return orders;
         }
 

@@ -18,9 +18,9 @@ namespace EShop.Controllers
         private CartService cartService = new CartService();
 
         // GET: Cart
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await cartService.FindAll());
+            return View(cartService.FindAll(User.Identity.GetUserId()));
         }
 
         /// <summary>
