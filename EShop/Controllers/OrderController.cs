@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
 
 namespace EShop.Controllers
 {
@@ -16,9 +18,9 @@ namespace EShop.Controllers
         private OrderService orderService = new OrderService();
 
         // GET: Order
-        public async Task<ActionResult> Index()
-        {
-            return View(await orderService.findAll());
+        public ActionResult Index()
+        { 
+            return View(orderService.findAll(User.Identity.GetUserId()));
         }
 
         // GET: Order/Details/5
@@ -28,8 +30,9 @@ namespace EShop.Controllers
         }
 
         // GET: Order/Create
-        public ActionResult Create()
+        public ActionResult Create(List<Cart> cart)
         {
+            orderService.create(cart);
             return View();
         }
 

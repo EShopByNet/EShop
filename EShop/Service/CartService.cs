@@ -37,9 +37,9 @@ namespace EShop.Service
         /// 获取所有购物车列表
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Cart>> FindAll()
+        public List<Cart> FindAll(string userID)
         {
-            return await db.Cart.ToListAsync();
+            return db.Cart.Where(n=>n.userId.Equals(userID)).ToList();
         }
 
         /// <summary>
