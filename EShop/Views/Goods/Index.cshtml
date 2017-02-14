@@ -13,19 +13,17 @@
     <tr>
         <th>图像</th>
         <th>名称</th>
+        <th>价格</th>
         <th>描述</th>
         <th>操作</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-          @*  @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-              @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
-        </td>
-        <td>@Html.DisplayFor(modelItem => item.catId)</td>
-        <td>@Html.DisplayFor(modelItem => item.detailId)</td>
+        <td><img width="50" height="50" src="@Html.DisplayFor(modelItem => item.image)" alt="images" />
+        <td>@Html.DisplayFor(modelItem => item.name)</td>
+        <td>@Html.DisplayFor(modelItem=>item.price)</td>
+        <td>@Html.DisplayFor(modelItem => item.detail)</td>
         <td>
             @Html.ActionLink("编辑", "Edit", new { id = item.id })
             @Html.ActionLink("详细", "Details", new { id = item.id })
