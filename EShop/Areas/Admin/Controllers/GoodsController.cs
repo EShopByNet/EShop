@@ -63,7 +63,7 @@ namespace EShop.Areas.Admin.Controllers
                     goods.image = path;
                 }
                 await goodsServer.createGoods(goods);
-                return RedirectToAction("Index");
+                return Redirect("Index");
             }
 
             return View(goods);

@@ -154,7 +154,7 @@
     <hr />
     @foreach (var item in Model)
     {
-        <div class="section">
+        <div class="section" style="display:inline-block">
             <h2 id="section-2">@item.cat.name</h2>
             @foreach (var goods in item.goodsList)
             {
@@ -162,7 +162,7 @@
                     <a href="/Goods/Details/@goods.id">
                         <img src="@goods.image" alt="" style="height:300px;width:100%;">
                     </a>
-                    <h5>@goods.detail</h5>
+                    <h5>@goods.name</h5>
                     <div style="color:red;">￥@goods.price</div>
                 </div>
             }
@@ -171,9 +171,8 @@
 </div>
 <ul class="nav nav-tabs nav-justified" data-spy="affix" data-offset-top="125" style="background-color:#000000;">
     <li class="active"><a href="#section-1">所有分类</a></li>
-    <li><a href="#section-2">户外馆</a></li>
-    <li><a href="#section-3">骑行馆</a></li>
-    <li><a href="#section-4">体育馆</a></li>
-    <li><a href="#section-5">运动城</a></li>
-    <li><a href="#section-6">装备馆</a></li>
+    @foreach (var item in catData)
+    {
+        <li><a href="#section-2">@item.cat.name</a></li>
+    }
 </ul>

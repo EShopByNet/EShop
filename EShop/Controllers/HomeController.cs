@@ -21,11 +21,12 @@ namespace EShop.Controllers
 
         private CatService catService = new CatService();
 
+        //
         public async Task<ActionResult> Index()
         {
             List<CatData> catdata = await catService.findAll();
             ViewBag.Cat = catdata;
-            return View(goodsService.findCatShopBySize(5));
+            return View(goodsService.findCatShopBySize(4));
         }
 
         public async Task<ActionResult> About(string id)

@@ -97,23 +97,23 @@
             });
         })
 
-        $("select[name = 'catId']").change(function () {
-            var cat = $(this).val();
-            $(this).attr("name", "parentId")
-            $.getJSON("/Admin/Cat/GetChild/"+cat, function (json) {
-                if (null != json && json.length > 0) {
-                    var select = $("<select/>");
-                    select.attr("name", "catId");
-                    $.each(json, function (index, data) {
-                        var option = $("<option/>");
-                        option.val(data.id);
-                        option.html(data.name);
-                        option.appendTo(select);
-                    });
-                    select.appendTo($("#catChose"));
-                }
-            });
-        })
+        //$("select[name = 'catId']").change(function () {
+        //    var cat = $(this).val();
+        //    $(this).attr("name", "parentId")
+        //    $.getJSON("/Admin/Cat/GetChild/"+cat, function (json) {
+        //        if (null != json && [] != json && json.length > 0) {
+        //            var select = $("<select/>");
+        //            select.attr("name", "catId");
+        //            $.each(json, function (index, data) {
+        //                var option = $("<option/>");
+        //                option.val(data.id);
+        //                option.html(data.name);
+        //                option.appendTo(select);
+        //            });
+        //            select.appendTo($("#catChose"));
+        //        }
+        //    });
+        //})
 
         $("#pic").change(function () {
             var file = this.files[0];

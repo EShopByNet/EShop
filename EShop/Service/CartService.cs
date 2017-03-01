@@ -15,6 +15,11 @@ namespace EShop.Service
 
         private EShopDbContext db = new EShopDbContext();
 
+        /// <summary>
+        /// 添加一条购物车记录
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
         public bool Add(Cart cart)
         {
             try
